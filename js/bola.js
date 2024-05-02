@@ -2,7 +2,7 @@ class Bola {
     constructor(puntPosicio, radi) {
         this.radi = radi;
         this.posicio = puntPosicio;
-        this.vx = 1;
+        this.vx = -1;
         this.vy = -1;
         this.color = "#fff";
       
@@ -31,17 +31,25 @@ class Bola {
 
         //Xoc amb els laterals del canvas
         //Xoc lateral superior
+        console.log(this.posicio.x);
+        //console.log(this.posicio.y);
         if(trajectoria.puntB.y - this.radi < 0){
-            exces= (trajectoria.puntB.y - this.radi)/this.vy;
+            exces = (trajectoria.puntB.y - this.radi)/this.vy;
             this.posicio.x = trajectoria.puntB.x - exces*this.vx;
             this.posicio.y = this.radi;
             xoc = true;
             this.vy = -this.vy;
         }
-        //Xoc lateral dret
         //Xoc lateral esquerra
+        if(trajectoria.puntB.x - this.radi < 0){
+            exces = (trajectoria.puntB.x - this.radi)/this.vx;
+            this.posicio.x = this.radi;
+            this.posicio.y = trajectoria.puntB.y - exces*this.vy;
+            xoc = true;
+            this.vx = -this.vx;
+        }
+        //Xoc lateral dret
         //Xoc lateral inferior
-      
         //Xoc amb la pala
 
         //Xoc amb els totxos del mur
