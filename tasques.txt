@@ -1,0 +1,13 @@
+- Rebot parets
+- Moviment pala
+- Generació totxos (implementar)
+- Generació mur
+- Desaparició totxos amb contacte pilota
+- Menú
+- UI joc
+- High score JSON
+- Temporitzador
+- Marcador
+- Vides
+- Sons
+- Perdre/guanyar
