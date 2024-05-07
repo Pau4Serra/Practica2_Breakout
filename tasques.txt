@@ -1,13 +1,21 @@
-- Rebot parets
-- Moviment pala
-- Generació totxos (implementar)
-- Generació mur
-- Desaparició totxos amb contacte pilota
-- Menú
-- UI joc
-- High score JSON
-- Temporitzador
-- Marcador
-- Vides
-- Sons
-- Perdre/guanyar
+PRIMERS PASOS
+[Pau] - Rebot parets ✅
+[Lau] - Moviment pala 
+        * Que es mogui ✅
+        * Que no surti dels limits
+        * Moviment + fluid
+[Pau] - Generacio totxos (implementar)
+[Pau] - Generacio mur
+
+PAS DOS
+[...] - Desaparicio totxos amb contacte pilota
+
+ATEMPORAL
+[Lau] - Menu
+[Lau] - UI joc
+[...] - High score JSON
+[Pau] - Temporitzador
+[...] - Marcador
+[...] - Vides
+[Lau] - Sons
+[...] - Perdre/guanyar

@@ -3,12 +3,15 @@
 */
 
 class Mur {
-    constructor() {
-        
+    constructor(numeroTotxos, dificultat) {
+        this.numeroTotxos = numeroTotxos;
+        this.dificultat = dificultat;
     }
 
     generaMur(){
-       
+       for(var i = 0; i < this.numeroTotxos; i++) {
+            this.totxo = new Totxo();
+       }
     }
     draw(ctx){
        

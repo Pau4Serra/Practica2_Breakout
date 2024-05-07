@@ -8,7 +8,7 @@ class Pala {
         this.alcada = alcada;
         this.posicio = puntPosicio;
         this.vy = 2;     
-        this.vx = 2;                                                     // velocitat = 10 píxels per fotograma
+        this.vx = 2;           // velocitat = 10 píxels per fotograma
         this.color = "#D30"; 
     }
 
@@ -23,6 +23,7 @@ class Pala {
         ctx.restore();
 
     }
+    
     mou(x,y){
         this.posicio.x += x;
         this.posicio.y += y;
