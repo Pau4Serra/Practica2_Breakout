@@ -1,11 +1,11 @@
 PRIMERS PASOS
 [Pau] - Rebot parets ✅
-[Lau] - Moviment pala 
+[Lau] - Moviment pala
         * Que es mogui ✅
         * Que no surti dels limits
         * Moviment + fluid
-[Pau] - Generacio totxos (implementar)
-[Pau] - Generacio mur
+[Pau] - Generacio totxos (implementar) ✅
+[Pau] - Generacio mur ✅
 
 PAS DOS
 [...] - Desaparicio totxos amb contacte pilota

@@ -3,18 +3,34 @@
 */
 
 class Mur {
-    constructor(numeroTotxos, dificultat) {
-        this.numeroTotxos = numeroTotxos;
+    constructor(dificultat, arrayTotxos) {
         this.dificultat = dificultat;
+        this.arrayTotxos = arrayTotxos;
     }
 
     generaMur(){
-       for(var i = 0; i < this.numeroTotxos; i++) {
-            this.totxo = new Totxo();
-       }
+        var margin = 15;
+        var x = 5;
+        var y = 15;
+        var totxoTemp;
+        for(var i = 0; i < this.nivells[this.dificultat].totxos.length; i++) {
+            for(var j = 0; j < this.nivells[this.dificultat].totxos[i].length; j++) {
+                if(this.nivells[this.dificultat].totxos[i].charAt(j) === 'a') {
+                    totxoTemp = new Totxo(new Punt(x + margin, y), 25, 10, this.nivells[this.dificultat].color);
+                    this.arrayTotxos.push(totxoTemp);
+                }
+                x = x + 15 + margin;
+            }
+            y = y + margin;
+            x = 5;
+        }
+        console.log(this.arrayTotxos);
+        console.log(y);
     }
     draw(ctx){
-       
+       this.arrayTotxos.forEach(element => {
+        element.draw(ctx);
+       });
     }
      
     defineixNivells(){
@@ -22,33 +38,32 @@ class Mur {
             {
                 color: "#4CF", // blue cel
                 totxos:[
-                    "aaaaaaaaaaaa",
-                    "aaaaaaaaaaaa",
-                    "aaaaaaaaaaaa",
-                    "aaaaaaaaaaaa",
+                    "aaaaaaaaa",
+                    "aaaaaaaaa",
+                    "aaaaaaaaa",
+                    "aaaaaaaaa",
                 ]
             },
             {
                 color: "#8D1", // verd
                 totxos:[
-                    "aaaaaaaaaaaa",
-                    "     aa     ",
-                    "   aaaaaa   ",
-                    "   aaaaaa   ",
-                    "     aa     ",
+                    " aaaaaaa ",
+                    "   aaa   ",
+                    "  aaaaa ",
+                    " aaaaaaa ",
+                    "   aaa   ",
                 ]
             },
             {
                 color: "#D30", // vermell
                 totxos:[
-                    "aaaaaaaaaaaa",
-                    "a          a",
-                    " a        a ",
-                    "aa        aa",
-                    "  aaaaaaaa  ",
+                    " aaaaaaa",
+                    "aa a a aa",
+                    "a a a a a",
+                    "aa a a aa",
+                    " aaaaaaa ",
                 ]
             }
         ];
     }
-
 };

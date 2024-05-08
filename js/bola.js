@@ -29,10 +29,10 @@ class Bola {
         let xoc = false;
         
 
-        //Xoc amb els laterals del canvas
-        //Xoc lateral superior
         //console.log(this.posicio.x);
         //console.log(this.posicio.y);
+     
+        //Xoc lateral superior
         if(trajectoria.puntB.y - this.radi < 0){
             exces = (trajectoria.puntB.y - this.radi)/this.vy;
             this.posicio.x = trajectoria.puntB.x - exces*this.vx;
@@ -49,18 +49,18 @@ class Bola {
             this.vx = -this.vx;
         }
         //Xoc lateral dret
-        if(trajectoria.puntB.x + this.radi > 300){
-            exces = (trajectoria.puntB.x + this.radi - 300)/this.vx;
-            this.posicio.x = 300 - this.radi;
+        if(trajectoria.puntB.x + this.radi > joc.amplada){
+            exces = (trajectoria.puntB.x + this.radi - joc.amplada)/this.vx;
+            this.posicio.x = joc.amplada - this.radi;
             this.posicio.y = trajectoria.puntB.y - exces*this.vy;
             xoc = true;
             this.vx = -this.vx;
         }
         //Xoc lateral inferior
-        if(trajectoria.puntB.y + this.radi > 150){
-            exces = (trajectoria.puntB.y + this.radi - 150)/this.vy;
+        if(trajectoria.puntB.y + this.radi > joc.alcada){
+            exces = (trajectoria.puntB.y + this.radi - joc.alcada)/this.vy;
             this.posicio.x = trajectoria.puntB.x - exces*this.vx;
-            this.posicio.y = 150 - this.radi;
+            this.posicio.y = joc.alcada - this.radi;
             xoc = true;
             this.vy = -this.vy;
 
