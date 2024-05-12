@@ -3,7 +3,7 @@
 */
 
 class Joc{
-    constructor(canvas,ctx) {
+    constructºor(canvas,ctx) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.amplada = canvas.width;
@@ -55,4 +55,20 @@ class Joc{
         this.draw();       
 
     }
+}
+
+function checkButtons() {
+    
+    var menu = document.getElementById("menu");
+    var joc = document.getElementById("joc");
+
+    var dificultatSeleccionada = document.querySelector(".dificultat.seleccionat");
+
+    if (dificultatSeleccionada) {
+        joc.style.display = "block";
+        menu.style.display = "none";
+
+        return true;
+    }
+
 }

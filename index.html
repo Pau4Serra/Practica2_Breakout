@@ -17,8 +17,28 @@
     
     
     </div>
+
+    <div id="menu">
+        <div id="opcions_menu">
+            <div id="columna_menu">
+                <h2>Choose difficulty</h2>
+                <button onclick="dificultat('facil', event)" class="dificultat" id="facil">Easy</button><br>
+                <button onclick="dificultat('mitjana', event)" class="dificultat" id="mitjana">Medium</button><br>
+                <button onclick="dificultat('alta', event)" class="dificultat" id="alta">Hard</button><br>
+            </div>
+            <br>
+        </div>
+        <button onclick="comencarJoc()" id="play">Play</button>
+    </div>
 </body>
 
+<div id="joc" style="display: none;">
+    <div id="marcador">
+        <div id="time">--:--</div>
+    </div>
+    <br>
+    <div id="tauler"></div>
+</div>
 <!-- cometari-->
 
 <script src="js/jquery-3.6.0.min.js"></script>
