@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>BreackOut 23-24
-        </title>
-        <link rel="stylesheet" href="css\estils.css">
-     
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>BreackOut 23-24
+    </title>
+    <link rel="stylesheet" href="css\estils.css">
+    <style>
+        #columna_menu {
+            display: flex; /* Usa flexbox para alinear los elementos */
+            flex-direction: row; /* Alinea los elementos en una fila */
+        }
+        .dificultat {
+            margin-right: 10px; /* Espacio entre los botones */
+        }
+    </style>
+</head>
 <html>
+
 <body>
     <div id="principal">
-      
-            <canvas id="joc"></canvas>
 
-    
-    
-    
+        <canvas id="joc" style="display: none;">
+            
+        </canvas>
+        
+        
+    </div>
+
+    <div id="joc1" style="display: none;">
+        <div id="marcador">
+            <div id="time">--:--</div>
+        </div>
+    </div>
+
+    <div id="menu">
+        <div id="opcions_menu">
+            <h1>Choose difficulty</h1>
+            <div id="columna_menu">
+                    <button onclick="dificultat('facil', event)" class="dificultat" id="facil">Easy</button><br>
+                    <button onclick="dificultat('mitjana', event)" class="dificultat" id="mitjana">Medium</button><br>
+                    <button onclick="dificultat('alta', event)" class="dificultat" id="alta">Hard</button><br>
+            </div>
+            <br>
+        </div>
+        <button onclick="comencarJoc()" id="play">Play</button>
     </div>
 </body>
 
