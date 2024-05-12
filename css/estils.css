@@ -53,3 +53,100 @@ body {
 	height: 200px;
 	border-radius:25px;
 }
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#facil {
+	background-color: rgb(75, 239, 75);
+}
+
+#facil:hover{
+	background-color: rgb(166, 242, 166);
+}
+
+
+#mitjana {
+	background-color: rgb(253, 253, 55);
+}
+
+#mitjana:hover {
+	background-color: rgb(250, 250, 167);
+}
+
+#alta {
+	background-color: rgb(249, 74, 43);
+}
+
+#alta:hover{
+	background-color: rgb(254, 161, 145);
+}
+
+#play {
+	background-color: rgb(105, 204, 247);
+}
+
+#play:hover {
+	background-color: rgb(167, 218, 240);
+}
+
+#columna_menu {
+	display: flex; /* Usa flexbox para alinear los elementos */
+	flex-direction: row; /* Alinea los elementos en una fila */
+	justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.dificultat {
+	margin-right: 10px; /* Espacio entre los botones */
+}
+
+#menu {
+	margin-top: 5%;
+	border: #ffffff solid 2px;
+	background-color: #ffffff;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#columna_menu{
+	margin-top: 2%;
+}
+
+#opcions_menu{
+	color: black;
+	font-size: 2em;
+}
+
+#marcador {
+    position: fixed;
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    background-color: #f9f9f9; /* Light background color */
+    border: 2px solid #000000; /* Border around the parent */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding around the content */
+    width: 200px; /* Set width to fit content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+#time, #contadorClicks, #puntuacio {
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 8px 12px; /* Padding inside child elements */
+    border-radius: 5px; /* Rounded corners for child elements */
+    margin-bottom: 8px; /* Spacing between child elements */
+    border: 1px solid #ccc; /* Border around child elements */
+}
+
+#time {
+    font-size: 16px; /* Font size */
+    color: #333; /* Text color */
+}

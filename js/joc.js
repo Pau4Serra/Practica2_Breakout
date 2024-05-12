@@ -3,7 +3,7 @@
 */
 
 class Joc{
-    constructºor(canvas,ctx) {
+    constructor(canvas,ctx) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.amplada = canvas.width;
@@ -56,19 +56,85 @@ class Joc{
 
     }
 }
+function dificultat (dificultat, event) {
+    var dificultatBotons = document.querySelectorAll(".dificultat")
+    //console.log(dificultatBotons);
+    dificultatBotons.forEach(btn => btn.classList.remove("seleccionat"));
+    event.target.classList.add("seleccionat");
+
+    seleccio(dificultat);
+}
 
 function checkButtons() {
     
     var menu = document.getElementById("menu");
     var joc = document.getElementById("joc");
 
-    var dificultatSeleccionada = document.querySelector(".dificultat.seleccionat");
+    var dificultat = document.querySelector(".dificultat.seleccionat");
+    var buttonPlay = document.querySelector("#play");
 
-    if (dificultatSeleccionada) {
+    if (dificultat && buttonPlay) {
         joc.style.display = "block";
+        joc1.style.display = "block";
         menu.style.display = "none";
-
         return true;
+
     }
 
 }
+
+function comencarJoc () {
+
+    if(checkButtons()) {
+        clearCanvas();
+        draw();
+        inicialitza();
+        update();
+        temps();
+    } else {
+        //console.log("Botons no seleccionats");
+    }
+}
+
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    var interval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+        timer--
+        if (timer < 0) {
+            console.log(timer)
+            clearInterval(interval); // Detiene el intervalo para que no siga ejecutándose
+            mostrarPopupTiempoAgotado(); // Muestra el popup cuando el tiempo se agota
+        }
+    }, 1000);
+}
+
+function mostrarPopupTiempoAgotado() {
+    var popup = $('<div id="popupTiempoAgotado" class="popup"></div>');
+    popup.append('<div class="contenido-popup">');
+    popup.find('.contenido-popup').append('<h2>Te has quedado sin tiempo, inténtalo de nuevo.</h2>');
+    popup.find('.contenido-popup').append('<button id="botonReintentar">Reintentar</button>');
+
+    $('body').append(popup)
+
+    $('#botonReintentar').on("click", function() {
+        $('#popupTiempoAgotado').remove(); // Elimina el popup
+        $('#menu').show(); // Muestra el menú
+        $('#joc').hide(); // Oculta el juego
+    });
+}
+
+
+function temps() {
+    var fiveMinutes = 300 * 1000,
+        display = $('#time');
+    startTimer(fiveMinutes, display);
+};
+
