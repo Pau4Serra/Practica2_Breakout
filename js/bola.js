@@ -67,6 +67,13 @@ class Bola {
             //alert("Has perdut");
         }
         //Xoc amb la pala
+        if(trajectoria.puntB.y + this.radi > joc.alcada-30) {
+            exces = (trajectoria.puntB.y + this.radi - joc.alcada)/this.vy;
+            this.posicio.x = trajectoria.puntB.x - exces*this.vx;
+            this.posicio.y = joc.alcada - this.radi;
+            xoc = true;
+            this.vy = -this.vy;
+        }
 
         //Xoc amb els totxos del mur
         //Utilitzem el mètode INTERSECCIOSEGMENTRECTANGLE
