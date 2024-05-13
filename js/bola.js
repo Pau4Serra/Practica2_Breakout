@@ -1,12 +1,16 @@
 class Bola {
-    constructor(puntPosicio, radi) {
+    constructor(pala, puntPosicio, radi) {
         this.radi = radi;
         this.posicio = puntPosicio;
         this.vx = 1;
         this.vy = -1;
         this.color = "#fff";
-      
+        this.pala = pala;      
     };
+
+    setPala(pala) {
+        this.pala = pala;
+    }
 
     draw(ctx) {
         ctx.beginPath();
@@ -22,13 +26,11 @@ class Bola {
     update(){
 
         let puntActual = this.posicio;
-        let puntSeguent= new Punt(this.posicio.x + this.vx,
-                            this.posicio.y + this.vy);
+        let puntSeguent= new Punt(this.posicio.x + this.vx, this.posicio.y + this.vy);
         let trajectoria= new Segment(puntActual, puntSeguent);
         let exces;
         let xoc = false;
         
-
         //console.log(this.posicio.x);
         //console.log(this.posicio.y);
      
@@ -64,13 +66,13 @@ class Bola {
             xoc = true;
             this.vy = -this.vy;
 
-            //alert("Has perdut");
+            alert("Has perdut");
         }
         //Xoc amb la pala
-        if(trajectoria.puntB.y + this.radi > joc.alcada-30) {
-            exces = (trajectoria.puntB.y + this.radi - joc.alcada)/this.vy;
+        if((trajectoria.puntB.y + this.radi > joc.alcada-15) && ((this.posicio.x > this.pala.posicio.x) && (this.posicio.x < this.pala.posicio.x + this.pala.amplada))) {
+            exces = (trajectoria.puntB.y + this.radi - (joc.alcada-15))/this.vy;
             this.posicio.x = trajectoria.puntB.x - exces*this.vx;
-            this.posicio.y = joc.alcada - this.radi;
+            this.posicio.y = (joc.alcada-15) - this.radi;
             xoc = true;
             this.vy = -this.vy;
         }
