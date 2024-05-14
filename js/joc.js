@@ -18,6 +18,10 @@ class Joc{
             LEFT:{code:37, pressed:false},
             RIGHT:{code:39, pressed:false}
         };
+
+        this.startTime = null;
+        this.elapsedTime = 0;
+        this.timerInterval = null;
     }
 
     draw(){
@@ -48,11 +52,78 @@ class Joc{
             // Handle keyup event if needed
         });
 
+        this.startTimer();
+
     }
 
     update(){
         this.bola.update();
         this.pala.update();
-        this.draw();       
+        this.draw();
+        
     }
+    
+    startTimer() {
+        this.startTime = Date.now();
+        const joc = this;
+        this.timerInterval = setInterval(function () {
+            joc.updateTimer();
+        }, 1000);
+    }
+
+    updateTimer() {
+        this.elapsedTime = Math.floor((Date.now() - this.startTime) / 1000);
+        const minutes = Math.floor(this.elapsedTime / 60);
+        const seconds = this.elapsedTime % 60;
+        $('#timer').text('Time: ' + this.pad(minutes) + ':' + this.pad(seconds));
+    }
+
+    pad(number) {
+        return number < 10 ? '0' + number : number;
+    }
+
+    stopTimer() {
+        clearInterval(this.timerInterval);
+    }
+    
+
+}
+
+
+//cuando esten los totxo se implementa
+
+function popupPerdre() {
+    $('.carta').off("click");
+    var popup = $('<div class="popup"></div>');
+    popup.html(`
+        <div class="popup-content">
+            <h2>You lost!</h2>
+            <p>No clicks remaining.</p>
+            <button id="returnMenu">Return to menu</button>
+        </div>
+    `);
+
+    $('body').append(popup);
+
+    $('#returnMenu').on('click', function() {
+        location.reload();
+    });
+}
+
+function popupVictoria() {
+    $('.carta').off("click");
+    var popup = $('<div class="popupVictoria"></div>');
+    popup.html(`
+        <div class="popup-content">
+            <h2>You win!</h2>
+            <p>Congratulations!</p>
+            <button id="returnMenu2">Return to menu</button>
+        </div>
+    `);
+
+    $('body').append(popup);
+
+    $('#returnMenu2').on('click', function() {
+        location.reload();
+    });
 }

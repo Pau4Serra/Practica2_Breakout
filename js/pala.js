@@ -6,13 +6,12 @@ class Pala {
     constructor(puntPosicio, amplada, alcada){      
         this.amplada = amplada;
         this.alcada = alcada;
-        this.posicio = puntPosicio;
-        this.vy = 2;     
-        this.vx = 2;           // velocitat = 10 píxels per fotograma
+        this.posicio = puntPosicio;   
+        this.vx = 5;           // velocitat = 10 píxels per fotograma
         this.color = "#D30"; 
     }
 
-    update(){
+    update() {
        
     }
    
@@ -24,7 +23,7 @@ class Pala {
 
     }
     
-    mou(x,y){
+    mou(x, y) {
         this.posicio.x += x;
         this.posicio.y += y;
     }

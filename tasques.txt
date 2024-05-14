@@ -6,17 +6,21 @@ PRIMERS PASOS
         * Moviment + fluid
 [Pau] - Generacio totxos (implementar) ✅
 [Pau] - Generacio mur ✅
-[Pau] - Rebot amb la pala ✅
+[Pau] - Rebot amb la pala
 
 PAS DOS
-[...] - Desaparicio totxos amb contacte pilota
+[Pau] - Desaparicio totxos amb contacte pilota
+[Pau] - Rebot amb els totxos
 
 ATEMPORAL
 [Lau] - Menu
 [Lau] - UI joc
+[...] - Inserir nom usuari?
 [...] - High score JSON
-[Pau] - Temporitzador
-[...] - Marcador
+[Hao] - Temporitzador ✅
+[Hao] - Marcador
 [...] - Vides
+[...] - Temporizador de 3s antes de comenzar a jugar
 [Lau] - Sons
-[...] - Perdre/guanyar
+[Hao] - Perdre/guanyar
+[Hao] - PopUp Mensajes

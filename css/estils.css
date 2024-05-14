@@ -110,11 +110,19 @@ button {
 }
 
 #menu {
-	margin-top: 5%;
-	border: #ffffff solid 2px;
-	background-color: #ffffff;
+	margin-top: 10px;
+	border: #000000 solid 2px;
+	background-color: rgb(137, 137, 137);
 	margin-left: 20%;
 	margin-right: 20%;
+}
+
+button{
+
+}
+
+button:hover {
+
 }
 
 #columna_menu{
