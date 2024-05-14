@@ -15,5 +15,10 @@ function animacio() {
     requestAnimationFrame(animacio);
 }
 
+function startGame(difficulty) {
+    
+    
+  }
+
 
 
