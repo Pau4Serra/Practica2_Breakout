@@ -14,11 +14,6 @@ class Joc{
         this.bola.setPala(this.pala);
         this.mur = new Mur(2, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
 
-        this.key = {
-            LEFT:{code:37, pressed:false},
-            RIGHT:{code:39, pressed:false}
-        };
-
         this.startTime = null;
         this.elapsedTime = 0;
         this.timerInterval = null;
@@ -38,20 +33,7 @@ class Joc{
     inicialitza(){
         this.mur.defineixNivells();
         this.mur.generaMur();
-        const joc = this;
-        $(document).on("keydown", function(e){
-            if (e.which === joc.key.LEFT.code) {
-                console.log("Left arrow key pressed");
-                joc.pala.mou(-5, 0);
-            } else if (e.which === joc.key.RIGHT.code) {
-                console.log("Right arrow key pressed");
-                joc.pala.mou(5, 0);
-            }
-        });
-        $(document).on("keyup", function(e){
-            // Handle keyup event if needed
-        });
-
+        this.pala.mou();
         this.startTimer();
 
     }
@@ -85,10 +67,7 @@ class Joc{
     stopTimer() {
         clearInterval(this.timerInterval);
     }
-    
-
 }
-
 
 //cuando esten los totxo se implementa
 

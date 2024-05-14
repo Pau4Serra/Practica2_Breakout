@@ -1,9 +1,9 @@
 PRIMERS PASOS
 [Pau] - Rebot parets ✅
-[Lau] - Moviment pala
+[Lau] - Moviment pala ✅
         * Que es mogui ✅
-        * Que no surti dels limits
-        * Moviment + fluid
+        * Que no surti dels limits ✅
+        * Moviment + fluid ✅
 [Pau] - Generacio totxos (implementar) ✅
 [Pau] - Generacio mur ✅
 [Pau] - Rebot amb la pala ✅
@@ -11,6 +11,7 @@ PRIMERS PASOS
 PAS DOS
 [Pau] - Desaparicio totxos amb contacte pilota ✅
 [Pau] - Rebot amb els totxos ✅
+[Pau] - Afectar direcció bola en funció de la velocitat de la pala
 
 ATEMPORAL
 [Lau] - Menu
