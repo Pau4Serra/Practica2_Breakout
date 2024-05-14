@@ -23,7 +23,7 @@ class Bola {
         this.posicio.x += x;
         this.posicio.y += y;
     }
-    update(){
+    update(arrayTotxos){
 
         let puntActual = this.posicio;
         let puntSeguent= new Punt(this.posicio.x + this.vx, this.posicio.y + this.vy);
@@ -69,37 +69,71 @@ class Bola {
             //alert("Has perdut");
         }
         //Xoc amb la pala
+        var objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);
 
-       /*  if((trajectoria.puntB.y + this.radi > joc.alcada-15) && ((this.posicio.x > (this.pala.posicio.x-1)) && (this.posicio.x < (this.pala.posicio.x + this.pala.amplada)-1))) {
-            exces = (trajectoria.puntB.y + this.radi - (joc.alcada-15))/this.vy;
-            this.posicio.x = trajectoria.puntB.x - exces*this.vx;
-            this.posicio.y = (joc.alcada-15) - this.radi;
-            xoc = true;
-            this.vy = -this.vy;
-        } */
-
-        var objInterseccio = this.interseccioSegmentRectangle(trajectoria, this.pala);
-
-        if(objInterseccio != undefined) {
-            switch(objInterseccio.vora) {
+        if (objInterseccioPala != undefined) {
+            switch (objInterseccioPala.vora) {
                 case 'superior':
-                    this.posicio.x = objInterseccio.pI.x;
-                    this.posicio.y = objInterseccio.pI.y;
+                    this.posicio.x = objInterseccioPala.pI.x;
+                    this.posicio.y = objInterseccioPala.pI.y;
                     xoc = true;
                     this.vy = -this.vy;
                     break;
                 case 'inferior':
                     break;
                 case 'esquerra':
+                    this.posicio.x = objInterseccioPala.pI.x - this.radi;
+                    this.posicio.y = objInterseccioPala.pI.y;
+                    xoc = true;
+                    this.vx = -this.vx;
                     break;
                 case 'dreta':
+                    this.posicio.x = objInterseccioPala.pI.x + this.radi;
+                    this.posicio.y = objInterseccioPala.pI.y;
+                    xoc = true;
+                    this.vx = -this.vx;
                     break;
             }
         }
 
         //Xoc amb els totxos del mur
-        //Utilitzem el mètode INTERSECCIOSEGMENTRECTANGLE
+        for (let i = 0; i < arrayTotxos.length; i++) {
+            let totxo = arrayTotxos[i];
+            var objInterseccioTotxo = this.interseccioSegmentRectangle(trajectoria, totxo);
+            
+            if (objInterseccioTotxo != undefined) {
+                switch (objInterseccioTotxo.vora) {
+                    case 'superior':
+                        this.posicio.x = objInterseccioTotxo.pI.x;
+                        this.posicio.y = objInterseccioTotxo.pI.y - this.radi;
+                        xoc = true;
+                        this.vy = -this.vy;
+                        break;
+                    case 'inferior':
+                        this.posicio.x = objInterseccioTotxo.pI.x;
+                        this.posicio.y = objInterseccioTotxo.pI.y + this.radi;
+                        xoc = true;
+                        this.vy = -this.vy;
+                        break;
+                    case 'esquerra':
+                        this.posicio.x = objInterseccioTotxo.pI.x - this.radi;
+                        this.posicio.y = objInterseccioTotxo.pI.y;
+                        xoc = true;
+                        this.vx = -this.vx;
+                        break;
+                    case 'dreta':
+                        this.posicio.x = objInterseccioTotxo.pI.x + this.radi;
+                        this.posicio.y = objInterseccioTotxo.pI.y;
+                        xoc = true;
+                        this.vx = -this.vx;
+                        break;
+                }
+                arrayTotxos.splice(i, 1);
+                i--;
+            }
+        }
         
+
         if (!xoc){
             this.posicio.x = trajectoria.puntB.x;
             this.posicio.y = trajectoria.puntB.y;
@@ -119,15 +153,15 @@ class Bola {
 
        //calcular punt d'intersecció amb les 4 vores del rectangle
        //necessitem coneixer els 4 segments del rectangle
-       //vora superior
-       let segmentVoraSuperior = new Segment(rectangle.posicio, new Punt((rectangle.posicio.x + rectangle.amplada), rectangle.posicio.y));
-       //vora inferior
-       let segmentVoraInferior = new Segment(new Punt(rectangle.posicio.x, rectangle.posicio.y + rectangle.alcada), new Punt(rectangle.posicio.x + rectangle.amplada, (rectangle.posicio.y + rectangle.alcada)));
-       //vora esquerra
-       let segmentVoraEsquerra = new Segment(rectangle.posicio, new Punt(rectangle.posicio.x, rectangle.posicio.y + rectangle.alcada));
-       //vora dreta
-       let segmentVoraDreta = new Segment(new Punt(rectangle.posicio.x + rectangle.amplada, rectangle.posicio.y), new Punt((rectangle.posicio.x + rectangle.amplada), (rectangle.posicio.y + rectangle.amplada)));
+       let puntSuperiorEsquerra = new Punt(rectangle.posicio.x - this.radi, rectangle.posicio.y - this.radi);
+       let puntSuperiorDreta = new Punt(rectangle.posicio.x + rectangle.amplada + this.radi, rectangle.posicio.y - this.radi);
+       let puntInferiorEsquerra = new Punt(rectangle.posicio.x - this.radi, rectangle.posicio.y + rectangle.alcada + this.radi);
+       let puntInferiorDreta = new Punt(rectangle.posicio.x + rectangle.amplada + this.radi, rectangle.posicio.y + rectangle.alcada + this.radi);
 
+       let segmentVoraSuperior = new Segment(puntSuperiorEsquerra, puntSuperiorDreta);
+       let segmentVoraInferior = new Segment(puntInferiorEsquerra, puntInferiorDreta);
+       let segmentVoraEsquerra = new Segment(puntSuperiorEsquerra, puntInferiorEsquerra);
+       let segmentVoraDreta = new Segment(puntSuperiorDreta, puntInferiorDreta);
        //2n REVISAR SI EXISTEIX UN PUNT D'INTERSECCIÓ EN UN DELS 4 SEGMENTS
        //SI EXISTEIX, QUIN ÉS AQUEST PUNT
        //si hi ha més d'n, el més ajustat

@@ -12,7 +12,7 @@ class Joc{
         this.pala = new Pala(new Punt((this.canvas.width-60)/2,this.canvas.height-15),60,4);
         this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height/2),3);
         this.bola.setPala(this.pala);
-        this.mur = new Mur(1, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
+        this.mur = new Mur(2, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
 
         this.key = {
             LEFT:{code:37, pressed:false},
@@ -57,7 +57,7 @@ class Joc{
     }
 
     update(){
-        this.bola.update();
+        this.bola.update(this.mur.arrayTotxos);
         this.pala.update();
         this.draw();
         
