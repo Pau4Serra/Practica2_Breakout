@@ -6,11 +6,11 @@ PRIMERS PASOS
         * Moviment + fluid
 [Pau] - Generacio totxos (implementar) ✅
 [Pau] - Generacio mur ✅
-[Pau] - Rebot amb la pala
+[Pau] - Rebot amb la pala ✅
 
 PAS DOS
-[Pau] - Desaparicio totxos amb contacte pilota
-[Pau] - Rebot amb els totxos
+[Pau] - Desaparicio totxos amb contacte pilota ✅
+[Pau] - Rebot amb els totxos ✅
 
 ATEMPORAL
 [Lau] - Menu
