@@ -17,6 +17,9 @@ class Joc{
         this.startTime = null;
         this.elapsedTime = 0;
         this.timerInterval = null;
+
+        this.vides = 3; // Número de vidas al inicio
+        
     }
 
     draw(){
@@ -24,6 +27,20 @@ class Joc{
         this.pala.draw(this.ctx);
         this.bola.draw(this.ctx);
         this.mur.draw(this.ctx);
+        this.mostrarVidas(); // Llamada para mostrar las vidas
+    }
+
+     // Restar una vida cuando la bola toque el suelo
+     /*restarVida() {
+        this.vides--;
+        if (this.vides <= 0) {
+            popupPerdre(); // Mostrar pantalla de pérdida si se quedan sin vidas
+        }
+    } */
+
+    // Mostrar las vidas en algún lugar visible
+    mostrarVidas() {
+        $('#vides').text('Vidas: ' + this.vides);
     }
 
     clearCanvas(){
@@ -34,23 +51,27 @@ class Joc{
         this.mur.defineixNivells();
         this.mur.generaMur();
         this.pala.mou();
-        this.startTimer();
-
+        this.startTime = Date.now(); // Inicializar el tiempo de inicio
+        this.startTimer(); // Iniciar el temporizador
     }
 
     update(){
         this.bola.update(this.mur.arrayTotxos);
         this.pala.update();
+
+        /*if (this.bola.posicio.y + this.bola.radi >= this.alcada) {
+            this.restarVida(); // Restar una vida si la bola toca el suelo
+            this.bola.posicio.y = this.alcada - this.bola.radi; // Colocar la bola en la parte superior del suelo
+        } */
+
         this.draw();
         
     }
-    
     startTimer() {
-        this.startTime = Date.now();
         const joc = this;
         this.timerInterval = setInterval(function () {
-            joc.updateTimer();
-        }, 1000);
+            joc.update();
+        }, 1000 / 60); // Llamar a update aproximadamente 60 veces por segundo
     }
 
     updateTimer() {
@@ -67,7 +88,14 @@ class Joc{
     stopTimer() {
         clearInterval(this.timerInterval);
     }
+
+    /* startVidasCounter() {
+        // Iniciar contador de vidas
+        this.mostrarVidas(); // Mostrar las vidas al iniciar el contador
+    } */
+
 }
+
 
 //cuando esten los totxo se implementa
 
