@@ -67,6 +67,7 @@ class Bola {
             this.vx = Math.random() < 0.5 ? -1 : 1;  // Reset velocity x to its initial value
             this.vy = -1; // Reset velocity y to its initial value
             this.v = 3;
+            this.pala.velocitat = 1;
             xoc = true;
         }
         //Xoc amb la pala

@@ -3,13 +3,16 @@ class Pala {
         this.amplada = amplada;
         this.alcada = alcada;
         this.posicio = puntPosicio;   
-        this.velocitat = 2;
+        this.velocitat = 1;
         this.vx = 0;           // Initialize vx to 0
         this.color = "#D30"; 
     }
 
     update() {
         this.mou(); // Call the movement method in the update method
+        if(this.velocitat <= 2) {
+            this.velocitat = this.velocitat + 0.0001;
+        }
     }
    
     draw(ctx) {
