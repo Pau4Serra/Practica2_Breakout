@@ -2,7 +2,7 @@
 
 body {
     text-align: center;
-    background: #333 url(../images/20151006051016_votacion-estrellas-css.jpg);
+    background: #333 url(../images/fons1.jpg) no-repeat center center fixed;
     color: #eee;
 	background-size: cover;
 }
