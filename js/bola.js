@@ -2,10 +2,11 @@ class Bola {
     constructor(pala, puntPosicio, radi) {
         this.radi = radi;
         this.posicio = puntPosicio;
-        this.vx = 1;
+        this.vx = Math.random() < 0.5 ? -1 : 1;
         this.vy = -1;
         this.color = "#fff";
-        this.pala = pala;      
+        this.pala = pala;
+        this.v = 3;    
     };
 
     setPala(pala) {
@@ -24,9 +25,9 @@ class Bola {
         this.posicio.y += y;
     }
     update(arrayTotxos){
-
+        
         let puntActual = this.posicio;
-        let puntSeguent= new Punt(this.posicio.x + this.vx, this.posicio.y + this.vy);
+        let puntSeguent= new Punt(this.posicio.x + this.vx/this.v, this.posicio.y + this.vy/this.v);
         let trajectoria= new Segment(puntActual, puntSeguent);
         let exces;
         let xoc = false;
@@ -59,14 +60,14 @@ class Bola {
             this.vx = -this.vx;
         }
         //Xoc lateral inferior
-        if(trajectoria.puntB.y + this.radi > joc.alcada){
-            exces = (trajectoria.puntB.y + this.radi - joc.alcada)/this.vy;
-            this.posicio.x = trajectoria.puntB.x - exces*this.vx;
-            this.posicio.y = joc.alcada - this.radi;
+        if (trajectoria.puntB.y + this.radi > joc.alcada) {
+            // Reset the ball's position and velocity
+            this.posicio.x = joc.amplada / 2;
+            this.posicio.y = joc.alcada - 30;
+            this.vx = Math.random() < 0.5 ? -1 : 1;  // Reset velocity x to its initial value
+            this.vy = -1; // Reset velocity y to its initial value
+            this.v = 3;
             xoc = true;
-            this.vy = -this.vy;
-
-            //alert("Has perdut");
         }
         //Xoc amb la pala
         var objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);
@@ -78,6 +79,25 @@ class Bola {
                     this.posicio.y = objInterseccioPala.pI.y;
                     xoc = true;
                     this.vy = -this.vy;
+
+                    //Per modificar l'angle de la bola al rebotar segons el moviment de la pala
+
+                    /*  if(this.pala.vx > 0) {
+                        if(this.vx < 0) {
+                            this.vx *= -this.vx;
+                        } else {
+                            this.vx *= this.vx;
+                        }
+                    }
+
+                    if(this.pala.vx < 0) {
+                        if(this.vx > 0) {
+                            this.vx *= -this.vx;
+                        } else {
+                            this.vy *= this.vx;
+                        }
+                    } */
+                    
                     break;
                 case 'inferior':
                     break;
@@ -137,7 +157,13 @@ class Bola {
         if (!xoc){
             this.posicio.x = trajectoria.puntB.x;
             this.posicio.y = trajectoria.puntB.y;
-        }     
+        }   
+        
+        if(this.v >= 1) {
+            this.v = this.v - 0.0002;
+            //console.log(this.v);
+        }
+        
     }
 
     interseccioSegmentRectangle(segment, rectangle){

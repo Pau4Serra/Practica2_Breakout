@@ -10,9 +10,9 @@ class Joc{
         this.alcada = canvas.height;
        
         this.pala = new Pala(new Punt((this.canvas.width-60)/2,this.canvas.height-15),60,4);
-        this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height/2),3);
+        this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height-30),3);
         this.bola.setPala(this.pala);
-        this.mur = new Mur(2, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
+        this.mur = new Mur(0, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
 
         this.startTime = null;
         this.elapsedTime = 0;
@@ -40,7 +40,7 @@ class Joc{
 
     // Mostrar las vidas en algún lugar visible
     mostrarVidas() {
-        $('#vides').text('Vidas: ' + this.vides);
+        $('#vides').text('HP: ' + this.vides);
     }
 
     clearCanvas(){
@@ -90,7 +90,7 @@ class Joc{
     }
 
     /* startVidasCounter() {
-        // Iniciar contador de vidas
+        //Iniciar contador de vidas
         this.mostrarVidas(); // Mostrar las vidas al iniciar el contador
     } */
 

@@ -33,28 +33,29 @@ var key = {
 
 $(document).on("keydown", function(e){
     if (e.which === key.LEFT.code) {
-        console.log("Left arrow key pressed");
+        //console.log("Left arrow key pressed");
         key.LEFT.pressed = true;
         key.RIGHT.pressed = false;
         joc.pala.vx = -joc.pala.velocitat; // Update vx to move left
     } else if (e.which === key.RIGHT.code) {
-        console.log("Right arrow key pressed");
+        //console.log("Right arrow key pressed");
         key.RIGHT.pressed = true;
         key.LEFT.pressed = false;
         joc.pala.vx = joc.pala.velocitat; // Update vx to move right
     }
+    console.log(joc.pala.vx);
 });
 
 $(document).on("keyup", function(e){
     if (e.which === key.LEFT.code && key.LEFT.pressed) {
-        console.log("Left arrow key released");
+        //console.log("Left arrow key released");
         key.LEFT.pressed = false;
         if (key.RIGHT.pressed) {
             joc.pala.vx = joc.pala.velocitat;
         } else {
             joc.pala.vx = 0;
         }    } else if (e.which === key.RIGHT.code && key.RIGHT.pressed) {
-        console.log("Right arrow key released");
+        //console.log("Right arrow key released");
         key.RIGHT.pressed = false;
         if (key.LEFT.pressed) {
             joc.pala.vx = -joc.pala.velocitat;

@@ -24,8 +24,8 @@ class Mur {
             y = y + margin;
             x = 5;
         }
-        console.log(this.arrayTotxos);
-        console.log(y);
+        //console.log(this.arrayTotxos);
+        //console.log(y);
     }
     draw(ctx){
        this.arrayTotxos.forEach(element => {
@@ -63,7 +63,7 @@ class Mur {
                     "aa a a aa",
                     " aaaaaaa ",
                 ]
-            }
+            },
         ];
     }
 };

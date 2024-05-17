@@ -12,7 +12,7 @@ PAS DOS
 [Pau] - Desaparicio totxos amb contacte pilota ✅
 [Pau] - Rebot amb els totxos ✅
 [Pau] - Afectar direcció bola en funció de la velocitat de la pala
-[Pau] - Direcció aleatòria de la bola al iniciar i al perdre una vida
+[Pau] - Direcció aleatòria de la bola al iniciar ✅ i al perdre una vida ❌
 [...] - Comptador Vides
 
 ATEMPORAL
