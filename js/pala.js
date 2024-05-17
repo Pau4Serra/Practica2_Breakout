@@ -4,12 +4,12 @@ class Pala {
         this.alcada = alcada;
         this.posicio = puntPosicio;   
         this.velocitat = 1;
-        this.vx = 0;           // Initialize vx to 0
+        this.vx = 0;
         this.color = "#D30"; 
     }
 
     update() {
-        this.mou(); // Call the movement method in the update method
+        this.mou();
         if(this.velocitat <= 2) {
             this.velocitat = this.velocitat + 0.0001;
         }
@@ -24,7 +24,7 @@ class Pala {
     
     mou() {
         if(this.posicio.x + this.vx > 0 && this.posicio.x + this.vx < joc.amplada - this.amplada) {
-            this.posicio.x += this.vx; // Update position with vx
+            this.posicio.x += this.vx;
         }
     }
 }
@@ -39,12 +39,12 @@ $(document).on("keydown", function(e){
         //console.log("Left arrow key pressed");
         key.LEFT.pressed = true;
         key.RIGHT.pressed = false;
-        joc.pala.vx = -joc.pala.velocitat; // Update vx to move left
+        joc.pala.vx = -joc.pala.velocitat;
     } else if (e.which === key.RIGHT.code) {
         //console.log("Right arrow key pressed");
         key.RIGHT.pressed = true;
         key.LEFT.pressed = false;
-        joc.pala.vx = joc.pala.velocitat; // Update vx to move right
+        joc.pala.vx = joc.pala.velocitat;
     }
     console.log(joc.pala.vx);
 });
