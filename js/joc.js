@@ -70,6 +70,15 @@ class Joc{
         clearInterval(this.timerInterval);
     }
 
+    /*decrementLives() {
+        this.lives--;
+        $('#vides').text('HP: ' + this.lives);
+        if (this.lives <= 0) {
+            alert('Game Over');
+            $('#principal').hide();
+            $('#menu').show();
+        } */
+
 }
 
 
