@@ -46,13 +46,16 @@ class Bola {
             xoc = true;
         }
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
+            if (joc.onBolaCaida) {
+                joc.onBolaCaida();  // Llamar a la función asignada cuando la bola caiga
+            }
             this.posicio.x = joc.amplada / 2;
             this.posicio.y = joc.alcada - 30;
             this.vx = Math.random() < 0.5 ? -1 : 1;
             this.vy = -1;
             this.v = 3;
             this.pala.velocitat = 1;
-            xoc = true;
+            return;
         }
     
         let objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);
