@@ -36,7 +36,7 @@ class Mur {
     defineixNivells(){
         this.nivells=[
             {
-                color: "#f5a742", // blue cel
+                color: "#FF75ED", // rosa
                 totxos:[
                     "aaaaaaaaa",
                     "aaaaaaaaa",
@@ -45,7 +45,7 @@ class Mur {
                 ]
             },
             {
-                color: "#a142f5", // verd
+                color: "#DFFA4B", // groc
                 totxos:[
                     " aaaaaaa ",
                     "   aaa   ",
@@ -55,7 +55,7 @@ class Mur {
                 ]
             },
             {
-                color: "#3fd166", // vermell
+                color: "#28F7AD", // verd
                 totxos:[
                     " aaaaaaa",
                     "aa a a aa",
