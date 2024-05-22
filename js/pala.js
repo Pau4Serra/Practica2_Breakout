@@ -5,7 +5,7 @@ class Pala {
         this.posicio = puntPosicio;   
         this.velocitat = 1;
         this.vx = 0;
-        this.color = "#D30"; 
+        this.color = "#99a8b0"; 
     }
 
     update() {

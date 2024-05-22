@@ -12,7 +12,7 @@ $(document).ready(function() {
 });
 
 function beginGame() {
-    let backgrounds = ["../images/fons1.jpg", "../images/fons2.jpg", "../images/fons3.jpg"];
+    let backgrounds = ["images/fons1.jpg", "images/fons2.jpg", "images/fons3.jpg"];
     let randomBackground = backgrounds[Math.floor(Math.random() * 3)];
     
     $("body").css({
