@@ -46,7 +46,7 @@ $(document).on("keydown", function(e){
         key.LEFT.pressed = false;
         joc.pala.vx = joc.pala.velocitat;
     }
-    console.log(joc.pala.vx);
+    //console.log(joc.pala.vx);
 });
 
 $(document).on("keyup", function(e){
@@ -57,7 +57,8 @@ $(document).on("keyup", function(e){
             joc.pala.vx = joc.pala.velocitat;
         } else {
             joc.pala.vx = 0;
-        }    } else if (e.which === key.RIGHT.code && key.RIGHT.pressed) {
+        }    
+    } else if (e.which === key.RIGHT.code && key.RIGHT.pressed) {
         //console.log("Right arrow key released");
         key.RIGHT.pressed = false;
         if (key.LEFT.pressed) {

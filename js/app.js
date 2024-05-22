@@ -9,8 +9,6 @@ var nivell;
 $(document).ready(function() {
     myCanvas = document.getElementById("joc");
     ctx = myCanvas.getContext("2d");
-    
-    beginGame(); // Call beginGame after the DOM is ready
 });
 
 function beginGame() {
@@ -23,7 +21,7 @@ function beginGame() {
 
     });
     
-    console.log("New background:", randomBackground);
+    //console.log("New background:", randomBackground);
 
     //countdown(); // Call countdown after changing the background
 }
@@ -63,8 +61,6 @@ function showHPDecrement() {
 
     setTimeout(() => {
         countdown(() => {
-            joc.inicialitza();
-            animacio();
         });
     }, 1000);  // Mostrar "- 1HP" por 1 segundo antes de iniciar el countdown
 }
@@ -74,23 +70,23 @@ function restartCountdown() {
 }
 
  function animacio() {
-    /* if (joc.vides > 0) { */
+    if (joc.vides > 0) {
         joc.update();
         requestAnimationFrame(animacio);
-   /* } else {
+    } else {
         let playerName = prompt("Game Over! Enter your name:");
         if (playerName) {
             updateHighscores(playerName, joc.elapsedTime);
         }
         displayHighscores();
-    }*/
+    }
 } 
 
 joc.onBolaCaida = showHPDecrement;
 
 window.startGame = startGame;
 
-/*
+
 // Highscore functions
 function updateHighscores(name, score) {
     let highscores = JSON.parse(localStorage.getItem('highscores')) || [];
@@ -108,21 +104,25 @@ function displayHighscores() {
     });
     highscoreTable += '</ul>';
     $('#highscore').html(highscoreTable);
-}
+}  
 
 // Mostrar highscores al cargar la página
 displayHighscores();
 
-*/
+
 
 function startGame() {
     if(checkButtons()) {
-        console.log("entra a startGame()");
+        //("entra a startGame()");
         var level = nivell;
         $('#menu').hide();
         $('#principal').show();
-        joc = new Joc(myCanvas, ctx, level);
-        countdown()
+        beginGame();
+        countdown(() => {
+            joc = new Joc(myCanvas, ctx, level);
+            joc.inicialitza();
+            animacio();
+        });        
     }
 }
 
@@ -130,7 +130,7 @@ function difficulty (difficulty, event) {
     var buttonDifficulty = document.querySelectorAll(".selected");    
     buttonDifficulty.forEach(btn => btn.classList.remove("selected"));
     event.target.classList.add("selected");
-    console.log(difficulty);
+    //console.log(difficulty);
     nivell = difficulty;
 }
 
@@ -138,7 +138,7 @@ function checkButtons() {
     var menu = document.getElementById("menu");
 
     var difficultySelected = document.querySelector(".selected");
-    console.log(difficultySelected)
+    //console.log(difficultySelected)
 
     if (difficultySelected) {
         menu.style.display = "block";
@@ -146,7 +146,7 @@ function checkButtons() {
         
     } else {
         $('#error_difficulty').css('display', 'block');
-        console.log("No entra");
+        //console.log("No entra");
     }
 }
 
@@ -176,9 +176,9 @@ updateHighScores({ name: 'Player1', score: 100 });
 
 // Read high scores and display them
 const highScores = readHighScores();
-console.log('High Scores:');
+//console.log('High Scores:');
 highScores.forEach((score, index) => {
-    console.log(`${index + 1}. ${score.name}: ${score.score}`);
+    //console.log(`${index + 1}. ${score.name}: ${score.score}`);
 });
 
 

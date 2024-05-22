@@ -1,12 +1,13 @@
 class Bola {
-    constructor(pala, puntPosicio, radi) {
+    constructor(pala, puntPosicio, radi, vides) {
         this.radi = radi;
         this.posicio = puntPosicio;
         this.vx = Math.random() < 0.5 ? -1 : 1;
         this.vy = -1;
         this.color = "#fff";
         this.pala = pala;
-        this.v = 3;    
+        this.v = 2.5;    
+        this.vides = vides;
     };
 
     setPala(pala) {
@@ -46,15 +47,26 @@ class Bola {
             xoc = true;
         }
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
-            if (joc.onBolaCaida) {
-                joc.onBolaCaida();  // Llamar a la función asignada cuando la bola caiga
-            }
             this.posicio.x = joc.amplada / 2;
             this.posicio.y = joc.alcada - 30;
             this.vx = Math.random() < 0.5 ? -1 : 1;
             this.vy = -1;
             this.v = 3;
             this.pala.velocitat = 1;
+
+            joc.vides--;
+            $('#vides').text('HP: ' + joc.vides);  // Actualizar la visualización de vidas
+
+            if (joc.vides > 0) {
+                window.restartCountdown();  // Reiniciar el contador
+            } else {
+                joc.stopTimer();
+                let playerName = prompt("Game Over! Enter your name:");
+                if (playerName) {
+                    updateHighscores(playerName, joc.elapsedTime);
+                }
+                displayHighscores();
+            }
             return;
         }
     
@@ -212,4 +224,3 @@ class Bola {
         return Math.sqrt((p2.x-p1.x)*(p2.x-p1.x)+(p2.y-p1.y)*(p2.y-p1.y));
     }
 }
-

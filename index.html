@@ -10,20 +10,24 @@
 <html>
 <body>
     <div id="principal" style="display: none;">
-
             <canvas id="joc"></canvas>
-            <div id="timer">Time: 0</div>
+            <div id="time">Time: 0</div>
             <div id="vides">HP: 3</div>
             <!--<button id="back-to-menu">Back to Menu</button>-->
     </div>
 
     <div id="menu">
-         <h4>There are 3 different types of games! Choose one</h4>
-         <br>
-        <button onclick="difficulty('easy', event)">Easy</button>
-        <button onclick="difficulty('medium', event)">Medium</button>
-        <button onclick="difficulty('hard', event)">Hard</button>
-        <button onclick="startGame()" id="play">Play</button>
+        <div class="titles_menu">
+            <h1>ATARI BREAKOUT</h1>
+            <br>
+            <h3>There are 3 different types of games! Choose one</h3>
+        </div>
+        <div class="difficulty">
+            <button onclick="difficulty(0, event)">EASY</button>
+            <button onclick="difficulty(1, event)">MEDIUM</button>
+            <button onclick="difficulty(2, event)">HARD</button>
+        </div>
+        <button class="play" onclick="startGame()" id="play">PLAY</button>
         <div id="error_difficulty" style="display: none; color: red; font-size: 17px;">Please select a difficulty</div>
     </div>
 </body>

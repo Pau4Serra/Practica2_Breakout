@@ -2,20 +2,24 @@
 * CLASSE JOC
 */
 class Joc{
-    constructor(canvas,ctx) {
+    constructor(canvas, ctx, dificultat) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.amplada = canvas.width;
         this.alcada = canvas.height;
+        this.dificultat = dificultat;
        
         this.pala = new Pala(new Punt((this.canvas.width-60)/2,this.canvas.height-15),60,4);
-        this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height/2),3);
+        this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height/2 + 100), 3, 3);
         this.bola.setPala(this.pala);
-        this.mur = new Mur(2, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
+        this.mur = new Mur(dificultat, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
 
         this.startTime = null;
         this.elapsedTime = 0;
         this.timerInterval = null;
+
+        this.vides = 3;  // Inicializar vidas aquí
+        $('#vides').text('HP: ' + this.vides); // Actualizar la visualización de vidas al inicializar
 
         this.onBolaCaida = null;  // Función a ejecutar cuando la bola caiga
 
@@ -36,8 +40,9 @@ class Joc{
         this.mur.defineixNivells();
         this.mur.generaMur();
         this.pala.mou();
-        this.startTimer();
-
+        this.temps();
+        this.vides = 3;  // Asegurarse de que las vidas se inicialicen al comienzo del juego
+        $('#vides').text('HP: ' + this.vides);  // Actualizar la visualización de vidas
     }
 
     update(){
@@ -47,20 +52,31 @@ class Joc{
         
     }
     
-    startTimer() {
-        this.startTime = Date.now();
-        const joc = this;
-        this.timerInterval = setInterval(function () {
-            joc.updateTimer();
+    startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        var interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+    
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.text(minutes + ":" + seconds);
+            timer--;
+    
+            if (timer < 0) {
+                clearInterval(interval);
+                popupTime();
+                playGameOver();
+            }
         }, 1000);
     }
-
-    updateTimer() {
-        this.elapsedTime = Math.floor((Date.now() - this.startTime) / 1000);
-        const minutes = Math.floor(this.elapsedTime / 60);
-        const seconds = this.elapsedTime % 60;
-        $('#timer').text('Time: ' + this.pad(minutes) + ':' + this.pad(seconds));
-    }
+    
+    temps() {
+        var fiveMinutes = 300,
+            display = jQuery('#time');
+        this.startTimer(fiveMinutes, display);
+    };
 
     pad(number) {
         return number < 10 ? '0' + number : number;
@@ -69,15 +85,6 @@ class Joc{
     stopTimer() {
         clearInterval(this.timerInterval);
     }
-
-    /*decrementLives() {
-        this.lives--;
-        $('#vides').text('HP: ' + this.lives);
-        if (this.lives <= 0) {
-            alert('Game Over');
-            $('#principal').hide();
-            $('#menu').show();
-        } */
 
 }
 
