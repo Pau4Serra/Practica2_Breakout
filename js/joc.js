@@ -64,7 +64,7 @@ class Joc{
             display.text(minutes + ":" + seconds);
             timer--;
     
-            if (timer > 0) {
+            if (timer < 0) {
                 clearInterval(interval);
                 popupTime();
                 playGameOver();
