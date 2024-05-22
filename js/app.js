@@ -61,6 +61,9 @@ function showHPDecrement() {
 
     setTimeout(() => {
         countdown(() => {
+            if (joc.vides > 0) {
+                requestAnimationFrame(animacio);
+            }
         });
     }, 1000);  // Mostrar "- 1HP" por 1 segundo antes de iniciar el countdown
 }
@@ -74,13 +77,18 @@ function restartCountdown() {
         joc.update();
         requestAnimationFrame(animacio);
     } else {
-        let playerName = prompt("Game Over! Enter your name:");
-        if (playerName) {
-            updateHighscores(playerName, joc.elapsedTime);
-        }
-        displayHighscores();
+        gameOver();
     }
 } 
+
+
+function gameOver() {
+    let playerName = prompt("Game Over! Enter your name:");
+    if (playerName) {
+        updateHighscores(playerName, joc.elapsedTime);
+    }
+    displayHighscores();
+}
 
 joc.onBolaCaida = showHPDecrement;
 
@@ -147,7 +155,7 @@ function checkButtons() {
     } else {
         $('#error_difficulty').css('display', 'block');
         //console.log("No entra");
-    }
+    } 
 }
 
 // Function to read high scores from local storage
