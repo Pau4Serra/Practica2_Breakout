@@ -61,9 +61,6 @@ function showHPDecrement() {
 
     setTimeout(() => {
         countdown(() => {
-            if (joc.vides > 0) {
-                requestAnimationFrame(animacio);
-            }
         });
     }, 1000);  // Mostrar "- 1HP" por 1 segundo antes de iniciar el countdown
 }
@@ -73,7 +70,7 @@ function restartCountdown() {
 }
 
  function animacio() {
-    if (joc.vides > 0) {
+    if (joc.vides = 0) {
         joc.update();
         requestAnimationFrame(animacio);
     } else {
