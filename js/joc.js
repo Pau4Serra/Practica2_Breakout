@@ -64,7 +64,7 @@ class Joc{
             display.text(minutes + ":" + seconds);
             timer--;
     
-            if (timer = 0) {
+            if (timer > 0) {
                 clearInterval(interval);
                 popupTime();
                 playGameOver();
@@ -85,30 +85,6 @@ class Joc{
     stopTimer() {
         clearInterval(this.timerInterval);
     }
-
-    
-    stopGame() {
-        cancelAnimationFrame(this.animationFrameId); // Detiene la animación
-        this.stopTimer(); // Detiene el temporizador si es necesario
-        // Muestra mensaje de fin de juego o ejecuta cualquier otra lógica necesaria
-        alert('Game Over!');
-        let playerName = prompt("Game Over! Enter your name:");
-        if (playerName) {
-            updateHighscores(playerName, this.elapsedTime);
-        }
-        displayHighscores();
-    }
-
-    // Modifica tu función de animación para verificar las vidas
-    animacio() {
-        if (this.vides > 0) {
-            this.update();
-            this.animationFrameId = requestAnimationFrame(this.animacio.bind(this));
-        } else {
-            this.stopGame();
-        }
-    }
-
 }
 
 
