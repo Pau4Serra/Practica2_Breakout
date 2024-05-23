@@ -20,10 +20,6 @@ function beginGame() {
         "background-size": "cover",
 
     });
-    
-    //console.log("New background:", randomBackground);
-
-    //countdown(); // Call countdown after changing the background
 }
 
 function countdown(callback) {
