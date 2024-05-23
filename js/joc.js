@@ -66,8 +66,8 @@ class Joc{
     
             if (timer > 0) {
                 clearInterval(interval);
-                popupTime();
-                playGameOver();
+                //popupTime();
+                //playGameOver();
             }
         }, 1000);
     }
