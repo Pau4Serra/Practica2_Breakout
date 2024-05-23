@@ -70,7 +70,7 @@ function restartCountdown() {
 }
 
  function animacio() {
-    if (joc.vides = 0) {
+    if (joc.vides > 0) {
         joc.update();
         requestAnimationFrame(animacio);
     } else {
