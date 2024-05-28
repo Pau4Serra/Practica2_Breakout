@@ -123,7 +123,7 @@ function startGame() {
             joc = new Joc(myCanvas, ctx, level);
             joc.inicialitza();
             animacio();
-        });        
+        });    
     }
 }
 
@@ -182,5 +182,17 @@ highScores.forEach((score, index) => {
     //console.log(`${index + 1}. ${score.name}: ${score.score}`);
 });
 
+
+
+
+var music;
+
+function musicSelector () {
+    music = new Audio('so/pokerMusic.mp3');
+}
+
+function playMusic() {
+    music.play();
+}
 
 
