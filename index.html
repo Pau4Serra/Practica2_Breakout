@@ -11,9 +11,11 @@
 <body>
     <div id="principal" style="display: none;">
             <canvas id="joc"></canvas>
-            <div id="time">Time: 0</div>
-            <div id="vides">HP: 3</div>
-            <!--<button id="back-to-menu">Back to Menu</button>-->
+            <div class="marcador">
+                <div id="time">05:00</div>
+                <div id="vides">HP: 3</div>
+            </div>
+            <div id="highscore"></div>
     </div>
 
     <div id="menu">
@@ -23,16 +25,17 @@
             <h3>There are 3 different types of games! Choose one</h3>
         </div>
         <div class="difficulty">
-            <button onclick="difficulty(0, event)">EASY</button>
-            <button onclick="difficulty(1, event)">MEDIUM</button>
-            <button onclick="difficulty(2, event)">HARD</button>
+            <button class="botoMenu" onclick="difficulty(0, event)">EASY</button>
+            <button class="botoMenu" onclick="difficulty(1, event)">MEDIUM</button>
+            <button class="botoMenu" onclick="difficulty(2, event)">HARD</button>
         </div>
         <button class="play" onclick="startGame()" id="play">PLAY</button>
         <div id="error_difficulty" style="display: none; color: red; font-size: 17px;">Please select a difficulty</div>
     </div>
 </body>
 
-<!-- <div id="highscore"></div> -->
+<!--<button id="back-to-menu">Back to Menu</button>-->
+
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>

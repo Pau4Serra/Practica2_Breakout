@@ -5,6 +5,7 @@
 var myCanvas;
 var ctx;
 var nivell;
+var gameOverShown = false;
 
 $(document).ready(function() {
     myCanvas = document.getElementById("joc");
@@ -22,10 +23,21 @@ function beginGame() {
     });
 }
 
+function drawGame() {
+    joc.clearCanvas();  // Clear the canvas
+    joc.pala.draw(ctx);  // Redraw the paddle
+    joc.bola.draw(ctx);  // Redraw the ball
+    joc.mur.draw(ctx);   // Redraw the bricks
+}
+
+var isPaused = false;
+
 function countdown(callback) {
+    isPaused = true;  // Pause the game during countdown
     let counter = 3;
     let countdownInterval = setInterval(() => {
-        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);  // Clear only the countdown area
+        drawGame();
         ctx.font = "32px Arial";
         ctx.fillStyle = "#000000";
         ctx.textAlign = "center";
@@ -40,13 +52,20 @@ function countdown(callback) {
         if (counter === 0) {
             clearInterval(countdownInterval);
             setTimeout(() => {
+                isPaused = false;  // Resume the game
                 if (callback) callback();
-            }, 1000);  // Esperar un segundo antes de iniciar el juego
+            }, 1000);  // Wait one second before resuming the game
         }
         counter--;
-    }, 1000);  // Actualiza cada segundo
+    }, 1000);  // Update every second
 }
 
+
+function restartCountdown() {
+    countdown(() => {
+        animacio();  // Resume animation after countdown
+    });
+}
 
 function showHPDecrement() {
     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
@@ -61,27 +80,76 @@ function showHPDecrement() {
     }, 1000);  // Mostrar "- 1HP" por 1 segundo antes de iniciar el countdown
 }
 
-function restartCountdown() {
-    countdown();  // Reiniciar la cuenta regresiva
-}
-
- function animacio() {
-    if (joc.vides > 0) {
-        joc.update();
-        requestAnimationFrame(animacio);
+function animacio() {
+    if (!isPaused) {
+        if (joc.vides > 0) {
+            joc.update();
+            drawGame();  // Move drawGame here
+            requestAnimationFrame(animacio);
+        } else {
+            popupPerdre();
+        }
     } else {
-        gameOver();
+        requestAnimationFrame(animacio);
     }
-} 
-
-
-function gameOver() {
-    let playerName = prompt("Game Over! Enter your name:");
-    if (playerName) {
-        updateHighscores(playerName, joc.elapsedTime);
-    }
-    displayHighscores();
 }
+
+
+function popupPerdre() {
+    if (gameOverShown) return;  // Si el popup ya se mostró, no hacer nada
+    gameOverShown = true;  // Marcar como mostrado
+
+    $('.carta').off("click"); 
+    var overlay = $('<div class="overlay"></div>');
+    var popup = $('<div class="popup"></div>');
+    popup.html(`
+        <div class="popup-content">
+            <h2>¡Game Over!</h2>
+            <p>Introduce tu nombre:</p>
+            <input type="text" id="playerName" />
+            <p id="errorMessage" class="error-message">Debes introducir tu nombre</p>
+            <button id="closePopup">Guardar y tornar</button>
+        </div>
+    `);
+
+    $('body').append(overlay).append(popup);
+
+    $('#closePopup').on('click', function() {
+        let playerName = $('#playerName').val();
+        if (playerName) {
+            updateHighscores(playerName, joc.elapsedTime);
+            displayHighscores();
+            overlay.remove();
+            popup.remove();
+            setTimeout(() => {
+                location.reload();
+            }, 100);  // Asegurar que se elimine el overlay y el popup antes de recargar
+        } else {
+            $('#errorMessage').show();
+        }
+    });
+}
+
+function popupVictoria() {
+    var popup = $('<div class="popup"></div>');
+    popup.html(`
+        <div class="popup-content">
+            <h2>¡Victoria!</h2>
+            <p>¡Has ganado!</p>
+            <button id="closePopup">Cerrar</button>
+        </div>
+    `);
+
+    $('body').append(popup);
+
+    // Manejar el cierre del popup
+    $('#closePopup').on('click', function() {
+        location.reload(); // Recargar la página al cerrar el popup
+    });
+}
+
+// Mueve esta línea para que se llame solo en `popupPerdre`
+window.startGame = startGame;
 
 joc.onBolaCaida = showHPDecrement;
 
@@ -110,22 +178,17 @@ function displayHighscores() {
 // Mostrar highscores al cargar la página
 displayHighscores();
 
-
-
 function startGame() {
-    if(checkButtons()) {
-        //("entra a startGame()");
-        var level = nivell;
+    if (checkButtons()) {
         $('#menu').hide();
         $('#principal').show();
         beginGame();
-        countdown(() => {
-            joc = new Joc(myCanvas, ctx, level);
-            joc.inicialitza();
-            animacio();
-        });    
+        joc = new Joc(myCanvas, ctx, nivell);
+        joc.inicialitza();
+        animacio();
     }
 }
+
 
 function difficulty (difficulty, event) {
     var buttonDifficulty = document.querySelectorAll(".selected");    
@@ -194,5 +257,3 @@ function musicSelector () {
 function playMusic() {
     music.play();
 }
-
-

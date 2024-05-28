@@ -26,6 +26,12 @@ class Bola {
         this.posicio.y += y;
     }
     update(arrayTotxos) {
+
+        //console.log(this.v);
+        //console.log(this.pala.velocitat);
+
+        if(isPaused) return;
+
         let puntActual = this.posicio;
         let puntSeguent = new Punt(this.posicio.x + this.vx / this.v, this.posicio.y + this.vy / this.v);
         let trajectoria = new Segment(puntActual, puntSeguent);
@@ -47,27 +53,27 @@ class Bola {
             xoc = true;
         }
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
-            this.posicio.x = joc.amplada / 2;
-            this.posicio.y = joc.alcada - 30;
-            this.vx = Math.random() < 0.5 ? -1 : 1;
-            this.vy = -1;
-            this.v = 3;
-            this.pala.velocitat = 1;
+            if(!isPaused) {
+                this.posicio.x = joc.amplada / 2;
+                this.posicio.y = joc.alcada - 30;
+                this.vx = Math.random() < 0.5 ? -1 : 1;
+                this.vy = -1;
+                this.v = 2.5;
+                this.pala.puntPosicio = new Punt((joc.amplada-60)/2,joc.alcada-15); //no funciona
+                
+                joc.vides--;
+                $('#vides').text('HP: ' + joc.vides);  // Actualizar la visualización de vidas
 
-            joc.vides--;
-            $('#vides').text('HP: ' + joc.vides);  // Actualizar la visualización de vidas
-
-            if (joc.vides > 0) {
-                window.restartCountdown();  // Reiniciar el contador
-            } else {
-                joc.stopTimer();
-                let playerName = prompt("Game Over! Enter your name:");
-                if (playerName) {
-                    updateHighscores(playerName, joc.elapsedTime);
+                if (joc.vides > 0) {
+                    joc.stopTimer();
+                    restartCountdown();  // Reiniciar el contador
+                } else {
+                    joc.stopTimer();
+                    popupPerdre();
                 }
-                displayHighscores();
-            }
-            return;
+                
+                return;
+            }            
         }
     
         let objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);

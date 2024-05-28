@@ -15,15 +15,16 @@ PAS DOS
 [Pau] - Direcció aleatòria de la bola al iniciar ✅ i al perdre una vida ❌
 
 ATEMPORAL
-[Lau] - Menu
-[Lau] - UI joc
+[Lau] - Menu ✅
+[Lau] - UI joc ✅
 [Hao] - Inserir nom usuari
 [Hao] - High score JSON
 [Hao] - Temporitzador ✅
 [Hao] - Marcador
 [Hao] - Vides
 [Hao] - Temporizador de 3s antes de comenzar a jugar ✅
-[Hao] - Afegir temp 3s cada vegada que es perd una vida
+[Pau] - Afegir temp 3s cada vegada que es perd una vida
 [Lau] - Sons
 [Hao] - Perdre/guanyar
 [Hao] - PopUp Mensajes
+[Lau] - css Marcador
