@@ -167,7 +167,7 @@ function updateHighscores(name, score) {
 
 function displayHighscores() {
     let highscores = JSON.parse(localStorage.getItem('highscores')) || [];
-    let highscoreTable = '<h2>Highscores</h2><ul>';
+    let highscoreTable = '<h2>Highscores</h2><ul style="list-style-type: none; padding: 0; text-align: left;">';
     highscores.forEach(highscore => {
         highscoreTable += `<li>${highscore.name}: ${highscore.score} seconds</li>`;
     });
