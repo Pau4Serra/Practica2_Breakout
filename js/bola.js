@@ -55,7 +55,7 @@ class Bola {
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
             if(!isPaused) {                
                 joc.vides--;
-                $('#vides').text('HP: ' + joc.vides);
+                replaceImageBasedOnLives();
 
                 if (joc.vides > 0) {
                     joc.stopTimer();
@@ -65,7 +65,7 @@ class Bola {
                     this.vx = Math.random() < 0.5 ? -1 : 1;
                     this.vy = -1;
                     this.v = 2;
-                    this.pala.puntPosicio = new Punt((joc.amplada-60)/2,joc.alcada-15); //no funciona
+                    this.pala.posicio = new Punt((joc.amplada-60)/2,joc.alcada-15);
                     this.pala.velocitat = 1.3;
                 } else {
                     joc.stopTimer();
@@ -247,5 +247,14 @@ class Bola {
 
     distancia = function(p1,p2){
         return Math.sqrt((p2.x-p1.x)*(p2.x-p1.x)+(p2.y-p1.y)*(p2.y-p1.y));
+    }
+}
+
+function replaceImageBasedOnLives() {
+    var images = $('#vides img');
+    var indexToReplace = joc.vides;
+    console.log(indexToReplace);
+    if (indexToReplace >= 0 && indexToReplace < images.length) {
+        $(images[indexToReplace]).attr('src', '/images/vida_buida.png');
     }
 }

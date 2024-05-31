@@ -17,7 +17,6 @@ class Joc{
         this.puntuacio = 0;
         this.multi = 3;
         this.vides = 3;
-        $('#vides').text('HP: ' + this.vides);
     }
 
     draw(){
@@ -39,7 +38,6 @@ class Joc{
             this.temps();
         }, 3000);
         this.vides = 4;
-        $('#vides').text('HP: ' + this.vides);
     }
 
     update(){

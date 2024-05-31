@@ -152,10 +152,28 @@ h3 {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-#vida {
+#vides {
+    position: fixed;
+    top: 20px;
+    left: 1280px;
+    width: fit-content;
     height: 30px;
-    margin-right: 5px;
+    background-color: #000;
+    padding: 5px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
 }
+
+#vides img {
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+}
+
 
 .overlay {
     position: fixed;
