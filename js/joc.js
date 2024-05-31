@@ -12,17 +12,12 @@ class Joc{
         this.pala = new Pala(new Punt((this.canvas.width-60)/2,this.canvas.height-15),60,4);
         this.bola = new Bola(this.pala, new Punt(this.canvas.width/2,this.canvas.height/2 + 100), 3, 4);
         this.bola.setPala(this.pala);
-        this.mur = new Mur(dificultat, []); //Canviar valor quan tinguem menú, fer que l'array sigui global (?)
+        this.mur = new Mur(dificultat, []);
 
-        this.startTime = null;
-        this.elapsedTime = 0;
-        this.timerInterval = null;
-
-        this.vides = 3;  // Inicializar vidas aquí
-        $('#vides').text('HP: ' + this.vides); // Actualizar la visualización de vidas al inicializar
-
-        this.onBolaCaida = null;  // Función a ejecutar cuando la bola caiga
-
+        this.puntuacio = 0;
+        this.multi = 3;
+        this.vides = 3;
+        $('#vides').text('HP: ' + this.vides);
     }
 
     draw(){
@@ -43,18 +38,17 @@ class Joc{
         setTimeout(() => {
             this.temps();
         }, 3000);
-        this.vides = 4;  // Asegurarse de que las vidas se inicialicen al comienzo del juego
-        $('#vides').text('HP: ' + this.vides);  // Actualizar la visualización de vidas
+        this.vides = 4;
+        $('#vides').text('HP: ' + this.vides);
     }
 
     update(){
         this.bola.update(this.mur.arrayTotxos);
         this.pala.update();
         this.draw();
-        
-        if (this.mur.arrayTotxos.length === 0) {
-            this.stopTimer(); // Detener el temporizador
-            popupVictoria(); // Llamar a la función de victoria
+
+        if(this.multi >= 1) {
+            this.multi -= 0.0001;
         }
     }
     
@@ -72,8 +66,6 @@ class Joc{
     
             if (timer < 0) {
                 clearInterval(interval);
-                //popupTime();
-                //playGameOver();
             }
         }, 1000);
     }
@@ -88,6 +80,6 @@ class Joc{
         return number < 10 ? '0' + number : number;
     }
     stopTimer() {
-        clearInterval(this.timerInterval);
+        clearInterval(this.interval);
     }
 }

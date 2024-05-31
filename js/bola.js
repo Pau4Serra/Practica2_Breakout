@@ -27,8 +27,8 @@ class Bola {
     }
     update(arrayTotxos) {
 
-        //console.log(this.v);
-        //console.log(this.pala.velocitat);
+        //console.log("BOLA: " + this.v);
+        //console.log("PALA: " + this.pala.velocitat);
 
         if(isPaused) return;
 
@@ -53,20 +53,20 @@ class Bola {
             xoc = true;
         }
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
-            if(!isPaused) {
-                this.posicio.x = joc.amplada / 2;
-                this.posicio.y = joc.alcada - 30;
-                this.vx = Math.random() < 0.5 ? -1 : 1;
-                this.vy = -1;
-                this.v = 2.5;
-                this.pala.puntPosicio = new Punt((joc.amplada-60)/2,joc.alcada-15); //no funciona
-                
+            if(!isPaused) {                
                 joc.vides--;
-                $('#vides').text('HP: ' + joc.vides);  // Actualizar la visualización de vidas
+                $('#vides').text('HP: ' + joc.vides);
 
                 if (joc.vides > 0) {
                     joc.stopTimer();
-                    restartCountdown();  // Reiniciar el contador
+                    restartCountdown();
+                    this.posicio.x = joc.amplada / 2;
+                    this.posicio.y = joc.alcada - 30;
+                    this.vx = Math.random() < 0.5 ? -1 : 1;
+                    this.vy = -1;
+                    this.v = 2;
+                    this.pala.puntPosicio = new Punt((joc.amplada-60)/2,joc.alcada-15); //no funciona
+                    this.pala.velocitat = 1.3;
                 } else {
                     joc.stopTimer();
                     popupPerdre();
@@ -75,13 +75,30 @@ class Bola {
                 return;
             }            
         }
+
+        if(arrayTotxos.length == 0) {
+            joc.stopTimer();
+            isPaused = true;
+            popupVictoria();
+        }
     
         let objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);
         if (objInterseccioPala != undefined) {
             switch (objInterseccioPala.vora) {
                 case 'superior':
-                    this.posicio.y = objInterseccioPala.pI.y - this.radi;
-                    this.vy = -this.vy;
+
+                    let palaCentroX = joc.pala.posicio.x + joc.pala.amplada / 2;
+                    let impactPos = (this.posicio.x - palaCentroX) / (joc.pala.amplada / 2);
+
+                    let angleMax = Math.PI / 3;
+                    let angle = impactPos * angleMax;
+                    let speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                    this.vx = speed * Math.sin(angle);
+                    this.vy = -speed * Math.cos(angle);
+
+                    /* this.posicio.y = objInterseccioPala.pI.y - this.radi;
+                    this.vy = -this.vy; */
+
                     xoc = true;
                     break;
                 case 'esquerra':
@@ -140,6 +157,8 @@ class Bola {
             }
     
             arrayTotxos.splice(firstCollision.index, 1);
+            joc.puntuacio += 10;
+            console.log(joc.puntuacio);
             xoc = true;
         }
     
