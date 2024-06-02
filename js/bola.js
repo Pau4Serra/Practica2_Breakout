@@ -255,6 +255,6 @@ function replaceImageBasedOnLives() {
     var indexToReplace = joc.vides;
     console.log(indexToReplace);
     if (indexToReplace >= 0 && indexToReplace < images.length) {
-        $(images[indexToReplace]).attr('src', '/images/vida_buida.png');
+        $(images[indexToReplace]).attr('src', 'images/vida_buida.png');
     }
 }
