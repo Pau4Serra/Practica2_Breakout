@@ -18,6 +18,15 @@ body {
   	padding: 20px;
 }
 
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+
 #joc{
 	image-rendering: auto; /* Default value, ensuring best rendering quality */
     text-rendering: optimizeLegibility; /* Enhance text rendering for readability */
@@ -68,8 +77,30 @@ button {
 	border: #0000c3 3px solid;
 }
 
-.titles_menu {
+#muteButton {
+    background-color: #f0f0f0;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    cursor: pointer;
+}
 
+#muteButton.muted {
+    background-image: url('../images/muteMusic.png');
+}
+
+#muteButton {
+    background-image: url('../images/music.png'); 
+}
+
+.titles_menu {
+    -webkit-text-stroke: 1px rgb(201, 10, 128);
 	margin-bottom: 50px;
 }
 
@@ -83,7 +114,6 @@ button:hover {
 
 #menu {
 	margin-top: 140px;
-	background-color: rgb(0, 0, 0);
 	margin-left: 20%;
 	margin-right: 20%;
 }

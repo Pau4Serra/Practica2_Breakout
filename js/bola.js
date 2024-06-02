@@ -8,10 +8,12 @@ class Bola {
         this.pala = pala;
         this.v = 2.5;    
         this.vides = vides;
+        this.bounce = new Audio('so/8bitbounce.wav');
     };
 
     setPala(pala) {
         this.pala = pala;
+        this.bounce.volume = 0.4;
     }
 
     draw(ctx) {
@@ -41,16 +43,19 @@ class Bola {
             this.posicio.y = this.radi;
             this.vy = -this.vy;
             xoc = true;
+            this.bounce.play();
         }
         if (trajectoria.puntB.x - this.radi < 0) {
             this.posicio.x = this.radi;
             this.vx = -this.vx;
             xoc = true;
+            this.bounce.play();
         }
         if (trajectoria.puntB.x + this.radi > joc.amplada) {
             this.posicio.x = joc.amplada - this.radi;
             this.vx = -this.vx;
             xoc = true;
+            this.bounce.play();
         }
         if (trajectoria.puntB.y + this.radi > joc.alcada) {
             if(!isPaused) {                
@@ -160,6 +165,7 @@ class Bola {
             joc.puntuacio += 10;
             console.log(joc.puntuacio);
             xoc = true;
+            this.bounce.play();
         }
     
         if (!xoc) {
@@ -173,6 +179,7 @@ class Bola {
     }
 
     interseccioSegmentRectangle(segment, rectangle){
+        
 
        //1r REVISAR SI EXISTEIX UN PUNT D'INTERSECCIÓ EN UN DELS 4 SEGMENTS
        //SI EXISTEIX, QUIN ÉS AQUEST PUNT
@@ -241,6 +248,7 @@ class Bola {
        }
        //Retorna la vora on s'ha produït la col·lisió, i el punt (x,y)
        if(voraI){
+            this.bounce.play();
            return {pI: puntIMin, vora: voraI};
        }
     }

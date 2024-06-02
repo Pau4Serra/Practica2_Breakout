@@ -11,6 +11,7 @@ $(document).ready(function() {
     myCanvas = document.getElementById("joc");
     ctx = myCanvas.getContext("2d");
     displayHighscores();
+    menu_music.play();
 });
 
 function beginGame() {
@@ -47,6 +48,7 @@ function countdown(callback) {
         ctx.shadowOffsetX = 1;
         ctx.shadowOffsetY = 1;
         ctx.shadowBlur = 2;
+        countdown_sound.play();
 
         ctx.fillText(counter > 0 ? counter : "GO!", myCanvas.width / 2, myCanvas.height / 2);
 
@@ -79,9 +81,9 @@ function animacio() {
 }
 
 function popupPerdre() {
-    if (gameOverShown) return;
-    gameOverShown = true;
-
+    /* if (gameOverShown) return;
+    gameOverShown = true; */
+    gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
     popup.html(`
@@ -97,6 +99,7 @@ function popupPerdre() {
 }
 
 function popupVictoria() {
+    victory.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
     popup.html(`
@@ -132,9 +135,11 @@ function clickPopup(overlay, popup) {
 
 function startGame() {
     if (checkButtons()) {
+        menu_music.pause();
         $('#menu').hide();
         $('#principal').show();
         beginGame();
+        //music.play();
         joc = new Joc(myCanvas, ctx, nivell);
         joc.inicialitza();
         animacio();
@@ -165,12 +170,22 @@ function checkButtons() {
     } 
 }
 
-var music;
+    var music = new Audio('so/pokerMusic.mp3');
+    var countdown_sound = new Audio('so/countdown.mp3');
+    var gameOver = new Audio('so/gameover.wav');
+    var victory = new Audio('so/victory.wav');
+    var menu_music = new Audio('so/mainMenu.mp3');
+    countdown_sound.volume = 0.2;
+    gameOver.volume = 0.3;
+    victory.volume = 0.3;
+    menu_music.volume = 0.25;
 
-function musicSelector () {
-    music = new Audio('so/pokerMusic.mp3');
-}
-
-function playMusic() {
-    music.play();
-}
+    function muteMusic() {
+        menu_music.muted = !menu_music.muted;    
+        var muteButton = document.getElementById('muteButton');
+        if (menu_music.muted) {
+            muteButton.classList.add('muted');
+        } else {
+            muteButton.classList.remove('muted');
+        }
+    }
