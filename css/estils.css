@@ -185,17 +185,18 @@ h3 {
 #vides {
     position: fixed;
     top: 20px;
-    left: 1280px;
-    width: fit-content;
+    left: calc(100% - 250px); /* Adjusted for better responsiveness */
+    min-width: 100px; /* Ensures minimum width */
     height: 30px;
     background-color: #000;
-    padding: 5px;
+    padding: 5px 10px; /* More padding for better look */
     color: #fff;
     font-family: Arial, sans-serif;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content horizontally */
 }
 
 #vides img {

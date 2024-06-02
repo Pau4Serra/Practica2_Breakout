@@ -93,14 +93,13 @@ class Bola {
                 case 'superior':
 
                     let palaCentroX = joc.pala.posicio.x + joc.pala.amplada / 2;
-                    let impactPos = (this.posicio.x - palaCentroX) / (joc.pala.amplada / 2);
-
+                    let impactPos = Math.max(-1, Math.min(1, (this.posicio.x - palaCentroX) / (joc.pala.amplada / 2)));
                     let angleMax = Math.PI / 3;
                     let angle = impactPos * angleMax;
                     let speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
                     this.vx = speed * Math.sin(angle);
                     this.vy = -speed * Math.cos(angle);
-
+            
                     /* this.posicio.y = objInterseccioPala.pI.y - this.radi;
                     this.vy = -this.vy; */
 
