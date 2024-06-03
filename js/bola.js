@@ -13,7 +13,7 @@ class Bola {
 
     setPala(pala) {
         this.pala = pala;
-        this.bounce.volume = 0.4;
+        this.bounce.volume = 0.6;
     }
 
     draw(ctx) {

@@ -5,6 +5,7 @@
 var myCanvas;
 var ctx;
 var nivell;
+var joc;
 var gameOverShown = false;
 
 $(document).ready(function() {
@@ -83,6 +84,7 @@ function animacio() {
 function popupPerdre() {
     /* if (gameOverShown) return;
     gameOverShown = true; */
+    joc.stopTimer();
     gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
@@ -99,6 +101,7 @@ function popupPerdre() {
 }
 
 function popupVictoria() {
+    joc.stopTimer();
     victory.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
@@ -176,8 +179,8 @@ function checkButtons() {
     var victory = new Audio('so/victory.wav');
     var menu_music = new Audio('so/mainMenu.mp3');
     countdown_sound.volume = 0.2;
-    gameOver.volume = 0.3;
-    victory.volume = 0.3;
+    gameOver.volume = 0.4;
+    victory.volume = 0.4;
     menu_music.volume = 0.25;
 
     function muteMusic() {

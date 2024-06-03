@@ -16,7 +16,8 @@ class Joc{
 
         this.puntuacio = 0;
         this.multi = 3;
-        this.vides = 3;
+        this.vides = 4;
+        this.timerInterval = null;
     }
 
     draw(){
@@ -37,7 +38,6 @@ class Joc{
         setTimeout(() => {
             this.temps();
         }, 3000);
-        this.vides = 4;
     }
 
     update(){
@@ -52,7 +52,7 @@ class Joc{
     
     startTimer(duration, display) {
         var timer = duration, minutes, seconds;
-        var interval = setInterval(function () {
+        this.timerInterval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
     
@@ -63,9 +63,9 @@ class Joc{
             timer--;
     
             if (timer < 0) {
-                clearInterval(interval);
+                clearInterval(this.timerInterval);
             }
-        }, 1000);
+        }.bind(this), 1000);
     }
     
     temps() {
@@ -78,6 +78,7 @@ class Joc{
         return number < 10 ? '0' + number : number;
     }
     stopTimer() {
+        console.log("Stopping timer");  // Debugging log
         clearInterval(this.interval);
     }
 }
