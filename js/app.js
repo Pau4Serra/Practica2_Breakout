@@ -15,17 +15,6 @@ $(document).ready(function() {
     menu_music.play();
 });
 
-function beginGame() {
-    let backgrounds = ["images/fons1.jpg", "images/fons2.jpg", "images/fons3.jpg"];
-    let randomBackground = backgrounds[Math.floor(Math.random() * 3)];
-    
-    $("body").css({
-        "background": "url('" + randomBackground + "') no-repeat center center fixed",
-        "background-size": "cover",
-
-    });
-}
-
 function drawGame() {
     joc.clearCanvas();
     joc.pala.draw(ctx);
@@ -141,8 +130,6 @@ function startGame() {
         menu_music.pause();
         $('#menu').hide();
         $('#principal').show();
-        beginGame();
-        //music.play();
         joc = new Joc(myCanvas, ctx, nivell);
         joc.inicialitza();
         animacio();
@@ -171,6 +158,35 @@ function checkButtons() {
         $('#error_difficulty').css('display', 'block');
         //console.log("No entra");
     } 
+}
+
+function backgroundSelector(nivell) {
+    switch(nivell) {
+        case 0:
+            $("body").css({
+                "background": "url('images/fons1') no-repeat center center fixed",
+                "background-size": "cover",
+            });
+            break;
+        case 1:
+            $("body").css({
+                "background": "url('../images/fons2') no-repeat center center fixed",
+                "background-size": "cover",
+            });
+            break;
+        case 2:
+            $("body").css({
+                "background": "url('images/fons3') no-repeat center center fixed",
+                "background-size": "cover",
+            });
+            break;
+        case 3:
+            $("body").css({
+                "background": "url('images/fons4') no-repeat center center fixed",
+                "background-size": "cover",
+            });
+            break;
+    }
 }
 
     var music = new Audio('so/pokerMusic.mp3');

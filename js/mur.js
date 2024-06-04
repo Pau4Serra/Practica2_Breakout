@@ -64,6 +64,16 @@ class Mur {
                     " aaaaaaa ",
                 ]
             },
+            {
+                color: "#000000",
+                totxos:[
+                    "  aaaaa  ",
+                    " aaaaaaa ",
+                    "aaaaaaaaa",
+                    " aaaaaaa ",
+                    "  aaaaa  ",
+                ]
+            }
         ];
     }
 };
