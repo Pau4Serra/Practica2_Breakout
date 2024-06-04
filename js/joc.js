@@ -63,13 +63,14 @@ class Joc{
             timer--;
     
             if (timer < 0) {
-                clearInterval(this.timerInterval);
+                joc.stopTimer();
+                popupTime();
             }
         }.bind(this), 1000);
     }
     
     temps() {
-        var fiveMinutes = 300,
+        var fiveMinutes = 10,
             display = jQuery('#time');
         this.startTimer(fiveMinutes, display);
     };

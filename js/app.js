@@ -117,6 +117,22 @@ function popupVictoria() {
     clickPopup(overlay, popup);
 }
 
+
+function popupTime() {
+    joc.stopTimer();
+    temps.play();
+    var overlay = $('<div class="overlay"></div>');
+    var popup = $('<div class="popup"></div>');
+    popup.html(`
+        <div class="popup-content">
+            <h2>You lost!</h2>
+            <p>Run out of time.</p>
+            <button id="returnMenu">Return to menu</button>
+        </div>
+    `);
+    clickPopup(overlay, popup);
+}
+
 function clickPopup(overlay, popup) {
 
     $('body').append(overlay).append(popup);
