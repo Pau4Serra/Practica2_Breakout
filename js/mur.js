@@ -24,8 +24,6 @@ class Mur {
             y = y + margin;
             x = 5;
         }
-        //console.log(this.arrayTotxos);
-        //console.log(y);
     }
     draw(ctx){
        this.arrayTotxos.forEach(element => {
@@ -36,7 +34,7 @@ class Mur {
     defineixNivells(){
         this.nivells=[
             {
-                color: "#FF75ED", // rosa
+                color: "#db6365",
                 totxos:[
                     "aaaaaaaaa",
                     "aaaaaaaaa",
@@ -45,7 +43,7 @@ class Mur {
                 ]
             },
             {
-                color: "#DFFA4B", // groc
+                color: "#FFE05C",
                 totxos:[
                     " aaaaaaa ",
                     "   aaa   ",
@@ -55,7 +53,7 @@ class Mur {
                 ]
             },
             {
-                color: "#28F7AD", // verd
+                color: "#F484FE",
                 totxos:[
                     " aaaaaaa",
                     "aa a a aa",
@@ -65,7 +63,7 @@ class Mur {
                 ]
             },
             {
-                color: "#000000",
+                color: "#000000", 
                 totxos:[
                     "  aaaaa  ",
                     " aaaaaaa ",
