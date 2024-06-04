@@ -18,6 +18,7 @@ class Joc{
         this.multi = 3;
         this.vides = 4;
         this.timerInterval = null;
+        this.tempsParat = false;
     }
 
     draw(){
@@ -45,7 +46,7 @@ class Joc{
         this.pala.update();
         this.draw();
 
-        if(this.multi >= 1) {
+        if(this.multi >= 1 && !this.tempsParat) {
             this.multi -= 0.0001;
         }
     }
@@ -79,7 +80,11 @@ class Joc{
         return number < 10 ? '0' + number : number;
     }
     stopTimer() {
-        console.log("Stopping timer");  // Debugging log
-        clearInterval(this.interval);
+        if (this.timerInterval !== null) {
+            console.log(this.timerInterval);
+            clearInterval(this.timerInterval);
+            this.tempsParat = true;
+            this.timerInterval = null;
+        }
     }
 }
