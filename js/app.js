@@ -131,6 +131,7 @@ function startGame() {
         $('#menu').hide();
         $('#principal').show();
         joc = new Joc(myCanvas, ctx, nivell);
+        backgroundSelector(nivell);
         joc.inicialitza();
         animacio();
     }
@@ -164,25 +165,25 @@ function backgroundSelector(nivell) {
     switch(nivell) {
         case 0:
             $("body").css({
-                "background": "url('images/fons1') no-repeat center center fixed",
+                "background": "url('images/fons1.jpg') no-repeat center center fixed",
                 "background-size": "cover",
             });
             break;
         case 1:
             $("body").css({
-                "background": "url('../images/fons2') no-repeat center center fixed",
+                "background": "url('images/fons2.jpg') no-repeat center center fixed",
                 "background-size": "cover",
             });
             break;
         case 2:
             $("body").css({
-                "background": "url('images/fons3') no-repeat center center fixed",
+                "background": "url('images/fons3.jpg') no-repeat center center fixed",
                 "background-size": "cover",
             });
             break;
         case 3:
             $("body").css({
-                "background": "url('images/fons4') no-repeat center center fixed",
+                "background": "url('images/fons4.jpg') no-repeat center center fixed",
                 "background-size": "cover",
             });
             break;

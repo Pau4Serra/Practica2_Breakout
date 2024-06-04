@@ -82,7 +82,6 @@ class Bola {
         }
 
         if(arrayTotxos.length == 0) {
-            //joc.stopTimer();
             isPaused = true;
             popupVictoria();
         }

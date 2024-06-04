@@ -103,7 +103,11 @@ button {
 	margin-bottom: 50px;
 }
 
-button:hover {
+.botoMenu:hover {
+	background-color: #0000c3;
+}
+
+.play:hover {
 	background-color: #0000c3;
 }
 
