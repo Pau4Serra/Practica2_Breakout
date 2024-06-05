@@ -71,8 +71,9 @@ class Bola {
                     this.v = 2;
                     this.pala.posicio = new Punt((joc.amplada-60)/2,joc.alcada-15);
                     this.pala.velocitat = 1.3;
-                } else {
+                } else {;
                     popupPerdre();
+                    isPaused = true;
                 }
                 
                 return;
@@ -80,8 +81,14 @@ class Bola {
         }
 
         if(arrayTotxos.length == 0) {
-            isPaused = true;
+            //console.log(joc.puntuacio);
+            joc.puntuacio += 50;
+            //console.log(joc.vides);
+            joc.puntuacio += this.vides * 100;
+            //console.log(joc.puntuacio);
+            joc.puntacio = joc.puntuacio * joc.multi;
             popupVictoria();
+            isPaused = true;
         }
     
         let objInterseccioPala = this.interseccioSegmentRectangle(trajectoria, this.pala);
@@ -159,7 +166,7 @@ class Bola {
     
             arrayTotxos.splice(firstCollision.index, 1);
             joc.puntuacio += 10;
-            $("#score").html("Score: " + joc.puntuacio);
+            $("#score").html("Score: " + joc.puntuacio + " x" + Math.round(joc.multi * 10)/10);
             xoc = true;
             this.bounce.play();
         }
@@ -257,7 +264,6 @@ class Bola {
 function replaceImageBasedOnLives() {
     var images = $('#vides img');
     var indexToReplace = joc.vides;
-    console.log(indexToReplace);
     if (indexToReplace >= 0 && indexToReplace < images.length) {
         $(images[indexToReplace]).attr('src', 'images/vida_buida.png');
     }

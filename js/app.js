@@ -77,7 +77,7 @@ function popupPerdre() {
     gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
-    var punts = Math.round(joc.puntuacio * joc.multi);
+    var punts = Math.round(joc.puntuacio);
     popup.html(`
         <div class="popup-content">
             <h2>Game Over!</h2>
@@ -96,7 +96,7 @@ function popupVictoria() {
     victory.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
-    var punts = Math.round(joc.puntuacio * joc.multi);
+    var punts = Math.round(joc.puntuacio);
     popup.html(`
         <div class="popup-content">
             <h2>Victory!</h2>
@@ -117,7 +117,7 @@ function popupTime() {
     gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
-    var punts = Math.round(joc.puntuacio * joc.multi);
+    var punts = Math.round(joc.puntuacio);
     popup.html(`
         <div class="popup-content">
             <h2>Run out of time</h2>

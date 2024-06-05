@@ -46,8 +46,12 @@ class Joc{
         this.pala.update();
         this.draw();
 
-        if(this.multi >= 1 && !this.tempsParat) {
-            this.multi -= 0.0001;
+        if(this.multi >= 1) {
+            if(this.bola.vides = 0) {
+                this.multi = 1;
+            }
+            this.multi -= 0.00019;
+            $("#score").html("Score: " + joc.puntuacio + " x" + Math.round(joc.multi * 10)/10);
         }
     }
     
@@ -71,7 +75,7 @@ class Joc{
     }
     
     temps() {
-        var fiveMinutes = 300,
+        var fiveMinutes = 90,
             display = jQuery('#time');
         this.startTimer(fiveMinutes, display);
     };
@@ -81,7 +85,7 @@ class Joc{
     }
     stopTimer() {
         if (this.timerInterval !== null) {
-            console.log(this.timerInterval);
+            //console.log(this.timerInterval);
             clearInterval(this.timerInterval);
             this.tempsParat = true;
             this.timerInterval = null;

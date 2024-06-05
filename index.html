@@ -12,7 +12,7 @@
     <div id="principal" style="display: none;">
             <canvas id="joc"></canvas>
             <div class="marcador">
-                <div id="time">05:00</div>                
+                <div id="time">01:30</div>
             </div>
             <div id="vides">
                 <img id="vida1" src="images/vida.png">
@@ -38,11 +38,11 @@
             <button class="botoMenu" onclick="difficulty(3, event)">LEVEL 4</button>
         </div>
         <button class="play" onclick="startGame()" id="play">PLAY</button>
-        <div id="error_difficulty" style="display: none; color: red; font-size: 23px;">Please select a difficulty</div>
-        <!-- <video autoplay muted loop id="myVideo">
-            <source src="background.mp4" type="video/mp4">
-        </video> -->
-        <div class="highscore"></div>
+        <div class="highscore_menu"></div>
+        <div id="removeJSON">
+            <img class="icon" src="images/trash.png">
+            Reset Highscores
+        </div>
     </div>
 </body>
 
