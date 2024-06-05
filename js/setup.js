@@ -19,8 +19,8 @@ class Setup {
 
     clickPopup(overlay, popup) {
         $('body').append(overlay).append(popup);
-        $('#closePopup').on('click', function() {
-            console.log("entra")
+        $('#closePopup').on('click', () => { // Use arrow function here
+            console.log("entra");
             let playerName = $('#playerName').val();
             if (playerName) {
                 this.updateHighscores(playerName, Math.round(joc.puntuacio * joc.multi));

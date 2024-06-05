@@ -77,9 +77,11 @@ function popupPerdre() {
     gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
+    var punts = Math.round(joc.puntuacio * joc.multi);
     popup.html(`
         <div class="popup-content">
             <h2>Game Over!</h2>
+            <p>You have scored ${punts} points!</p>
             <p>Enter your name:</p>
             <input type="text" id="playerName" />
             <p id="errorMessage" class="error-message">You must introduce a name</p>
@@ -94,9 +96,11 @@ function popupVictoria() {
     victory.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
+    var punts = Math.round(joc.puntuacio * joc.multi);
     popup.html(`
         <div class="popup-content">
             <h2>Victory!</h2>
+            <p>You have scored ${punts} points!</p>
             <p>Enter your name:</p>
             <input type="text" id="playerName" />
             <p id="errorMessage" class="error-message">You must introduce a name</p>
@@ -109,29 +113,22 @@ function popupVictoria() {
 
 function popupTime() {
     isPaused = true;
+    joc.stopTimer();
+    gameOver.play();
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
+    var punts = Math.round(joc.puntuacio * joc.multi);
     popup.html(`
         <div class="popup-content">
-            <h2>You lost!</h2>
-            <p>Run out of time.</p>
+            <h2>Run out of time</h2>
+            <p>You have scored ${punts} points!</p>
+            <p>Enter your name:</p>
+            <input type="text" id="playerName" />
+            <p id="errorMessage" class="error-message">You must introduce a name</p>
             <button id="closePopup">Return to menu</button>
         </div>
     `);
-    clickPopupNoScore(overlay, popup);
-}
-
-
-
-function clickPopupNoScore(overlay, popup) {
-    $('body').append(overlay).append(popup);
-    $('#closePopup').on('click', function() {
-        overlay.remove();
-        popup.remove();
-        setTimeout(() => {
-            location.reload();
-        }, 100);
-    });
+    setup.clickPopup(overlay, popup);
 }
 
 function startGame() {

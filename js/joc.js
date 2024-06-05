@@ -71,7 +71,7 @@ class Joc{
     }
     
     temps() {
-        var fiveMinutes = 300,
+        var fiveMinutes = 10,
             display = jQuery('#time');
         this.startTimer(fiveMinutes, display);
     };
