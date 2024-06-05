@@ -63,7 +63,6 @@ class Bola {
                 replaceImageBasedOnLives();
 
                 if (joc.vides > 0) {
-                    joc.stopTimer();
                     restartCountdown();
                     this.posicio.x = joc.amplada / 2;
                     this.posicio.y = joc.alcada - 30;
@@ -73,7 +72,6 @@ class Bola {
                     this.pala.posicio = new Punt((joc.amplada-60)/2,joc.alcada-15);
                     this.pala.velocitat = 1.3;
                 } else {
-                    joc.stopTimer();
                     popupPerdre();
                 }
                 
@@ -82,7 +80,6 @@ class Bola {
         }
 
         if(arrayTotxos.length == 0) {
-            joc.stopTimer();
             isPaused = true;
             popupVictoria();
         }

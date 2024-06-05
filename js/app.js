@@ -71,8 +71,6 @@ function animacio() {
 }
 
 function popupPerdre() {
-    /* if (gameOverShown) return;
-    gameOverShown = true; */
     joc.stopTimer();
     gameOver.play();
     var overlay = $('<div class="overlay"></div>');
@@ -108,24 +106,23 @@ function popupVictoria() {
 
 
 function popupTime() {
-    joc.stopTimer();
-    temps.play();
+    isPaused = true;
     var overlay = $('<div class="overlay"></div>');
     var popup = $('<div class="popup"></div>');
     popup.html(`
         <div class="popup-content">
             <h2>You lost!</h2>
             <p>Run out of time.</p>
-            <button id="returnMenu">Return to menu</button>
+            <button id="closePopup">Return to menu</button>
         </div>
     `);
-    clickPopup(overlay, popup);
+    clickPopupNoScore(overlay, popup);
 }
 
 function clickPopup(overlay, popup) {
-
     $('body').append(overlay).append(popup);
     $('#closePopup').on('click', function() {
+        console.log("entra")
         let playerName = $('#playerName').val();
         if (playerName) {
             updateHighscores(playerName, Math.round(joc.puntuacio * joc.multi));
@@ -138,6 +135,17 @@ function clickPopup(overlay, popup) {
         } else {
             $('#errorMessage').show();
         }
+    });
+}
+
+function clickPopupNoScore(overlay, popup) {
+    $('body').append(overlay).append(popup);
+    $('#closePopup').on('click', function() {
+        overlay.remove();
+        popup.remove();
+        setTimeout(() => {
+            location.reload();
+        }, 100);
     });
 }
 

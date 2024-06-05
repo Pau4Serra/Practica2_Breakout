@@ -64,7 +64,7 @@ class Joc{
             timer--;
     
             if (timer < 0) {
-                joc.stopTimer();
+                this.stopTimer();
                 popupTime();
             }
         }.bind(this), 1000);
