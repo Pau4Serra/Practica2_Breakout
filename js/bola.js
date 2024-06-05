@@ -81,12 +81,8 @@ class Bola {
         }
 
         if(arrayTotxos.length == 0) {
-            //console.log(joc.puntuacio);
-            joc.puntuacio += 50;
-            //console.log(joc.vides);
-            joc.puntuacio += joc.vides * 100;
-            //console.log(joc.puntuacio);
-            //console.log(puntuacioMulti)
+            joc.puntuacio += 50; //+50 punts si guanyes
+            joc.puntuacio += joc.vides * 100; //+100 punts per vida
             joc.puntuacio = joc.puntuacio * joc.multi;
             popupVictoria();
             isPaused = true;
