@@ -86,9 +86,7 @@ class Bola {
             //console.log(joc.vides);
             joc.puntuacio += joc.vides * 100;
             //console.log(joc.puntuacio);
-            var puntuacioMulti = (joc.puntuacio * joc.multi)
-            console.log(joc.puntuacio);
-            console.log(puntuacioMulti)
+            //console.log(puntuacioMulti)
             joc.puntuacio = joc.puntuacio * joc.multi;
             popupVictoria();
             isPaused = true;
