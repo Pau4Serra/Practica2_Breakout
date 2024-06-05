@@ -172,10 +172,11 @@ h3 {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-#highscore {
-	position: fixed;
-    top: 20px;
-    left: 30px;
+#score {
+    position: fixed;
+    top: 75px;
+    right: 30px;
+    width: 180px;
     background-color: #000;
     padding: 10px;
     color: #fff;
@@ -188,7 +189,7 @@ h3 {
 #vides {
     position: fixed;
     top: 20px;
-    left: calc(100% - 250px); /* Adjusted for better responsiveness */
+    left: calc(100% - 232px); /* Adjusted for better responsiveness */
     min-width: 100px; /* Ensures minimum width */
     height: 30px;
     background-color: #000;
@@ -208,6 +209,18 @@ h3 {
     margin: 0 2px;
 }
 
+#highscore {
+	position: fixed;
+    top: 20px;
+    left: 30px;
+    background-color: #000;
+    padding: 10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 
 .overlay {
     position: fixed;
