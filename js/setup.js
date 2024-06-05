@@ -36,7 +36,7 @@ class Setup {
     clickPopup(overlay, popup) {
         //console.log(joc.puntuacio);
         $('body').append(overlay).append(popup);
-        $('#closePopup').on('click', () => { // Use arrow function here
+        $('#closePopup').on('click', () => {
             //console.log("entra");
             let playerName = $('#playerName').val();
             if (playerName) {
@@ -54,8 +54,8 @@ class Setup {
     }
 
     resetJSON() {
-        localStorage.removeItem('highscores'); // Remove the highscores from localStorage
-        this.displayHighscores(); // Update the display
+        localStorage.removeItem('highscores');
+        this.displayHighscores();
     }
 }
 
@@ -68,16 +68,12 @@ $(document).ready(function() {
 });
 
 function positionRemoveJSON() {
+    
     var highscoreMenu = document.querySelector(".highscore_menu");
     var removeJSON = document.getElementById("removeJSON");
-    
-    // Get the bottom margin of the highscore_menu
     var highscoreMenuBottom = highscoreMenu.offsetTop + highscoreMenu.offsetHeight;
-    
-    // Add a little bit of space (e.g., 10 pixels) between the two elements
-    var spaceBetween = 10; // You can adjust this value as needed
-    
-    // Set the top position of the removeJSON button to be just below the highscore_menu with added space
+    var spaceBetween = 10;
+
     removeJSON.style.top = highscoreMenuBottom + spaceBetween + "px";
 }
 
