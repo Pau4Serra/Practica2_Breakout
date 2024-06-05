@@ -34,7 +34,7 @@ class Setup {
     }
 
     clickPopup(overlay, popup) {
-        console.log(joc.puntuacio);
+        //console.log(joc.puntuacio);
         $('body').append(overlay).append(popup);
         $('#closePopup').on('click', () => { // Use arrow function here
             //console.log("entra");

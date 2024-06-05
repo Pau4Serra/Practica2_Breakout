@@ -51,7 +51,7 @@ class Joc{
                 this.multi = 1;
             }
             this.multi -= 0.00019;
-            $("#score").html("Score: " + joc.puntuacio + " x" + Math.round(joc.multi * 10)/10);
+            $("#score").html("Score: " + Math.round(joc.puntuacio) + " x" + Math.round(joc.multi * 10)/10);
         }
     }
     

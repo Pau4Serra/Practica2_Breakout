@@ -84,9 +84,12 @@ class Bola {
             //console.log(joc.puntuacio);
             joc.puntuacio += 50;
             //console.log(joc.vides);
-            joc.puntuacio += this.vides * 100;
+            joc.puntuacio += joc.vides * 100;
             //console.log(joc.puntuacio);
-            joc.puntacio = joc.puntuacio * joc.multi;
+            var puntuacioMulti = (joc.puntuacio * joc.multi)
+            console.log(joc.puntuacio);
+            console.log(puntuacioMulti)
+            joc.puntuacio = joc.puntuacio * joc.multi;
             popupVictoria();
             isPaused = true;
         }
@@ -166,7 +169,7 @@ class Bola {
     
             arrayTotxos.splice(firstCollision.index, 1);
             joc.puntuacio += 10;
-            $("#score").html("Score: " + joc.puntuacio + " x" + Math.round(joc.multi * 10)/10);
+            $("#score").html("Score: " + Math.round(joc.puntuacio) + " x" + Math.round(joc.multi * 10)/10);
             xoc = true;
             this.bounce.play();
         }
