@@ -196,7 +196,6 @@ function backgroundSelector(nivell) {
     }
 }
 
-    var music = new Audio('so/pokerMusic.mp3');
     var countdown_sound = new Audio('so/countdown.mp3');
     var gameOver = new Audio('so/gameover.wav');
     var victory = new Audio('so/victory.wav');
