@@ -14,7 +14,7 @@ class Setup {
             highscoreTable += `<li>${highscore.name}: ${highscore.score} points</li>`;
         });
         highscoreTable += '</ul>';
-        $('#highscore').html(highscoreTable);
+        $('.highscore').html(highscoreTable);
     }
 
     clickPopup(overlay, popup) {

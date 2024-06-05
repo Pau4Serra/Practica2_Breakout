@@ -81,8 +81,8 @@ button {
     width: 50px;
     height: 50px;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    bottom: 10px;
+    right: 10px;
     z-index: 9999;
     background-repeat: no-repeat;
     background-position: center;
@@ -220,7 +220,7 @@ h3 {
     margin: 0 2px;
 }
 
-#highscore {
+.highscore {
 	position: fixed;
     top: 20px;
     left: 30px;
