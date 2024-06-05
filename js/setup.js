@@ -9,7 +9,7 @@ class Setup {
 
     displayHighscores() {
         let highscores = JSON.parse(localStorage.getItem('highscores')) || [];
-        let highscoreTable = '<h2>Highscores</h2><ul style="list-style-type: none; padding: 10px; text-align: left;">';
+        let highscoreTable = '<h2 id="top5">TOP 5</h2><ul style="list-style-type: none; padding: 10px; text-align: left;">';
         highscores.forEach(highscore => {
             highscoreTable += `<li>${highscore.name}: ${highscore.score} points</li>`;
         });
