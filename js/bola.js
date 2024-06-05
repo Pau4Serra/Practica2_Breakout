@@ -159,7 +159,7 @@ class Bola {
     
             arrayTotxos.splice(firstCollision.index, 1);
             joc.puntuacio += 10;
-            console.log(joc.puntuacio);
+            $("#score").html("Score: " + joc.puntuacio);
             xoc = true;
             this.bounce.play();
         }
