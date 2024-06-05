@@ -53,7 +53,7 @@ class Mur {
                 ]
             },
             {
-                color: "#F484FE",
+                color: "#55C29E",
                 totxos:[
                     " aaaaaaa",
                     "aa a a aa",

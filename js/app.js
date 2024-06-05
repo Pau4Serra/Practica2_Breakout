@@ -7,11 +7,13 @@ var ctx;
 var nivell;
 var joc;
 var gameOverShown = false;
+var setup;
 
 $(document).ready(function() {
+    setup = new Setup();
     myCanvas = document.getElementById("joc");
     ctx = myCanvas.getContext("2d");
-    displayHighscores();
+    setup.displayHighscores();
     menu_music.play();
 });
 
@@ -84,7 +86,7 @@ function popupPerdre() {
             <button id="closePopup">Return to menu</button>
         </div>
     `);
-    clickPopup(overlay, popup);
+    setup.clickPopup(overlay, popup);
 }
 
 function popupVictoria() {
@@ -101,7 +103,7 @@ function popupVictoria() {
             <button id="closePopup">Return to menu</button>
         </div>
     `);
-    clickPopup(overlay, popup);
+    setup.clickPopup(overlay, popup);
 }
 
 
@@ -119,24 +121,7 @@ function popupTime() {
     clickPopupNoScore(overlay, popup);
 }
 
-function clickPopup(overlay, popup) {
-    $('body').append(overlay).append(popup);
-    $('#closePopup').on('click', function() {
-        console.log("entra")
-        let playerName = $('#playerName').val();
-        if (playerName) {
-            updateHighscores(playerName, Math.round(joc.puntuacio * joc.multi));
-            displayHighscores();
-            overlay.remove();
-            popup.remove();
-            setTimeout(() => {
-                location.reload();
-            }, 100);
-        } else {
-            $('#errorMessage').show();
-        }
-    });
-}
+
 
 function clickPopupNoScore(overlay, popup) {
     $('body').append(overlay).append(popup);
